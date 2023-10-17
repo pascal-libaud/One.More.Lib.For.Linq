@@ -1,0 +1,17 @@
+﻿namespace One.More.Lib.For.Linq.Helper;
+
+public static partial class LinqHelper
+{
+    public static IEnumerable<T> InfiniteIterator<T>() where T : INumber<T>
+    {
+        T increment = T.Zero;
+        while (true)
+            yield return increment++;
+    }
+
+    public static IEnumerable<T> InfiniteIterator<T>(T start) where T : INumber<T>
+    {
+        while (true)
+            yield return start++;
+    }
+}
