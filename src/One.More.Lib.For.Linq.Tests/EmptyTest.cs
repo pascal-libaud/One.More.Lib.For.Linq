@@ -14,7 +14,7 @@ public class EmptyTest
     [Fact]
     public void Empty_should_be_empty()
     {
-        var result = LinqHelper.Empty<int>().MyToList();
+        var result = LinqHelper.Empty<int>().OmToList();
         Assert.Empty(result);
     }
 }

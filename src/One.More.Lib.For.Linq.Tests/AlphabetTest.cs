@@ -17,7 +17,7 @@ public class AlphabetTest
     [Fact]
     public void Alphabet_should_return_all_capital_letters()
     {
-        var alphabet = LinqHelper.Alphabet().MyToList();
+        var alphabet = LinqHelper.Alphabet().OmToList();
         for (char c = 'A'; c <= 'Z'; c++)
             Assert.Contains(alphabet, x => x == c);
     }

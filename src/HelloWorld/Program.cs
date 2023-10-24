@@ -25,7 +25,7 @@ internal class Program
 
         foreach (var number in LinqHelper.InfiniteIterator(2))
         {
-            if (primes.MyAll(i => number % i != 0))
+            if (primes.OmAll(i => number % i != 0))
             {
                 primes.Add(number);
                 yield return number;

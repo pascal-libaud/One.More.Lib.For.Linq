@@ -19,7 +19,7 @@ public class FullOuterJoinTest
             };
         };
 
-        var result = mocks1.FullOuterJoin(mocks2, comparer).MySelect(x => new Result(x.Item1?.Id, x.Item2?.Id));
+        var result = mocks1.FullOuterJoin(mocks2, comparer).OmSelect(x => new Result(x.Item1?.Id, x.Item2?.Id));
 
         Assert.Equal(expected, result);
     }

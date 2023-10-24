@@ -14,7 +14,7 @@ public class EmptyAsyncTest
     [Fact]
     public async Task EmptyAsync_should_be_empty()
     {
-        var result = await LinqHelper.EmptyAsync<int>().MyToListAsync();
+        var result = await LinqHelper.EmptyAsync<int>().OmToListAsync();
         Assert.Empty(result);
     }
 }
