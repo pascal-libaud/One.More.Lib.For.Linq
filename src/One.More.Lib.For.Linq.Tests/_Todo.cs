@@ -2,11 +2,9 @@ namespace One.More.Lib.For.Linq.Tests;
 
 public class _Todo
 {
-    // TODO Noter les tests pour les méthodes ci-dessous
+    // TODO Créer les tests pour les méthodes ci-dessous
 
     //InfiniteIteratorAsync
-
-    // AsEnumerable<T>(this T value)
 
     // OmWhere<T>(this IEnumerable<T> source, Func<T, bool> predicate) 
 

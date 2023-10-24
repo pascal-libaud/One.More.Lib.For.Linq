@@ -13,7 +13,7 @@ internal class Program
 
         Console.WriteLine();
 
-        foreach (var prime in PrimeNumbers())
+        foreach (var prime in PrimeNumbers().OmTake(100))
         {
             Console.WriteLine(prime);
         }
