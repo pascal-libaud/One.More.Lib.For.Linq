@@ -18,7 +18,7 @@ jobs:
       with:
         dotnet-version: 8.0.x  
     - name: Build
-      run: dotnet build --configuration Release
+      run: dotnet build src/One.More.Lib.For.Linq.sln --configuration Release
 
     - name: Test
       run: dotnet test
