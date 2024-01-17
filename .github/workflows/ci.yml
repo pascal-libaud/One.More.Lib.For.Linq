@@ -21,4 +21,4 @@ jobs:
       run: dotnet build src/One.More.Lib.For.Linq.sln --configuration Release
 
     - name: Test
-      run: dotnet test
+      run: dotnet test src/One.More.Lib.For.Linq.Tests
