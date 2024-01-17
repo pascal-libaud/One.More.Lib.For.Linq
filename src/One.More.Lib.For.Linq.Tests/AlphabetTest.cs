@@ -1,5 +1,4 @@
 using One.More.Lib.For.Linq.Helper;
-using Xunit.Abstractions;
 
 namespace One.More.Lib.For.Linq.Tests;
 
@@ -27,7 +26,7 @@ public class AlphabetTest
 public class FakeTest
 {
     [Fact]
-    public void AsserRed()
+    internal void AsserRed()
     {
         Assert.True(false);
     }
