@@ -4,16 +4,16 @@ public static partial class LinqHelper
 {
     public static IEnumerable<T> OmSkip<T>(this IEnumerable<T> source, int count)
     {
-        // Version Enumerator
-        //using var enumerator = source.GetEnumerator();
-        //while (count-- > 0)
-        //    if(!enumerator.MoveNext())
-        //        yield break;
+        return EnumerationWayStrategy.FocusOn switch
+        {
+            EnumerationWay.Foreach => OmSkip_Foreach(source, count),
+            EnumerationWay.Enumerator => OmSkip_Enumerator(source, count),
+            _ => OmSkip_Foreach(source, count)
+        };
+    }
 
-        //while (enumerator.MoveNext())
-        //    yield return enumerator.Current;
-
-        // Version foreach
+    private static IEnumerable<T> OmSkip_Foreach<T>(this IEnumerable<T> source, int count)
+    {
         foreach (var item in source)
         {
             if (count > 0)
@@ -23,15 +23,14 @@ public static partial class LinqHelper
         }
     }
 
-    public static IEnumerable<T> OmSkipLast<T>(this IEnumerable<T> source, int count)
+    private static IEnumerable<T> OmSkip_Enumerator<T>(this IEnumerable<T> source, int count)
     {
-        Queue<T> queue = new Queue<T>();
+        using var enumerator = source.GetEnumerator();
+        while (count-- > 0)
+            if (!enumerator.MoveNext())
+                yield break;
 
-        foreach (var item in source)
-        {
-            queue.Enqueue(item);
-            if (queue.Count > count)
-                yield return queue.Dequeue();
-        }
+        while (enumerator.MoveNext())
+            yield return enumerator.Current;
     }
 }

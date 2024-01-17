@@ -5,14 +5,14 @@ namespace One.More.Lib.For.Linq.Tests;
 public class OmAllAsyncTest
 {
     [Fact]
-    public async Task OmAllAsync_should_return_true_when_empty()
+    internal async Task OmAllAsync_should_return_true_when_empty()
     {
         Assert.True(await LinqHelper.EmptyAsync<int>().OmAllAsync(x => x == 10));
         Assert.True(await LinqHelper.EmptyAsync<int>().OmAllAsync(x => (x == 10).ToTask()));
     }
 
     [Fact]
-    public async Task OmAllAsync_should_not_enumerate_all_when_one_false()
+    internal async Task OmAllAsync_should_not_enumerate_all_when_one_false()
     {
         var spy = new EnumerableSpy();
 

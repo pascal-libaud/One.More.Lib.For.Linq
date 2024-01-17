@@ -4,9 +4,7 @@ public static partial class LinqHelper
 {
     public static IEnumerable<T> InfiniteIterator<T>() where T : INumber<T>
     {
-        T increment = T.Zero;
-        while (true)
-            yield return increment++;
+        return InfiniteIterator(T.Zero);
     }
 
     public static IEnumerable<T> InfiniteIterator<T>(T start) where T : INumber<T>

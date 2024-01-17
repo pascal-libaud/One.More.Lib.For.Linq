@@ -5,7 +5,7 @@ namespace One.More.Lib.For.Linq.Tests;
 public class OmSelectTest
 {
     [Fact]
-    public void OmSelect_should_not_enumerate_early()
+    internal void OmSelect_should_not_enumerate_early()
     {
         var spy = new EnumerableSpy();
 
@@ -17,7 +17,7 @@ public class OmSelectTest
     }
 
     [Fact]
-    public void OmSelect_should_enumerate_each_item_once()
+    internal void OmSelect_should_enumerate_each_item_once()
     {
         var spy = new EnumerableSpy();
 
@@ -26,7 +26,7 @@ public class OmSelectTest
     }
 
     [Fact]
-    public void OmSelect_should_not_make_stack_overflow()
+    internal void OmSelect_should_not_make_stack_overflow()
     {
         var spy = new EnumerableSpy();
 
@@ -35,7 +35,7 @@ public class OmSelectTest
     }
 
     [Fact]
-    public void OmSelect_should_not_throw_when_null_before_enumeration()
+    internal void OmSelect_should_not_throw_when_null_before_enumeration()
     {
         try
         {
@@ -49,7 +49,7 @@ public class OmSelectTest
     }
 
     [Fact]
-    public void OmSelect_should_throw_when_null_on_enumeration()
+    internal void OmSelect_should_throw_when_null_on_enumeration()
     {
         var func = () =>
         {
@@ -62,7 +62,7 @@ public class OmSelectTest
     }
 
     [Fact]
-    public void OmSelect_should_work_well_when_not_null()
+    internal void OmSelect_should_work_well_when_not_null()
     {
         var source = LinqHelper.Range(5).OmSelect(x => x * 2);
         var expected = new[] { 0, 2, 4, 6, 8 };
@@ -71,7 +71,7 @@ public class OmSelectTest
     }
 
     [Fact]
-    public void OmSelect_with_index_should_have_got_right_indexes()
+    internal void OmSelect_with_index_should_have_got_right_indexes()
     {
         Assert.All(LinqHelper.Range(10).OmSelect((_, i) => i).OmToList(), (x, i) => Assert.Equal(x, i));
     }

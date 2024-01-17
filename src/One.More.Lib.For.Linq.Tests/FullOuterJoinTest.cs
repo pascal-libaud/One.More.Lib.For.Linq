@@ -4,9 +4,10 @@ namespace One.More.Lib.For.Linq.Tests;
 
 public class FullOuterJoinTest
 {
+    // TODO Utiliser OmFullOuterJoin
     [Theory]
     [MemberData(nameof(GetValues))]
-    public void Test(Mock1[] mocks1, Mock2[] mocks2, Result[] expected)
+    internal void Test(Mock1[] mocks1, Mock2[] mocks2, Result[] expected)
     {
         Func<Mock1?, Mock2?, int> comparer = (a, b) =>
         {

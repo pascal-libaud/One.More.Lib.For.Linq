@@ -12,6 +12,9 @@
 // Enumerable.Single()
 // Enumerable.SingleOrDefault()
 
+// Enumerable.Last()
+// Enumerable.LastOrDefault()
+
 // Enumerable.ToArray()
 // Enumerable.ToDictionary()
 // Enumerable.ToHashSet()

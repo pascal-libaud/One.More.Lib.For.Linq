@@ -14,9 +14,7 @@ internal class Program
         Console.WriteLine();
 
         foreach (var prime in PrimeNumbers().OmTake(100))
-        {
             Console.WriteLine(prime);
-        }
     }
 
     private static IEnumerable<int> PrimeNumbers()

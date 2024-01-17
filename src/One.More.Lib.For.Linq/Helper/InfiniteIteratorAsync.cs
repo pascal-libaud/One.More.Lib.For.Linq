@@ -2,13 +2,18 @@
 
 public static partial class LinqHelper
 {
-    public static async IAsyncEnumerable<T> InfiniteIteratorAsync<T>() where T : INumber<T>
+    public static IAsyncEnumerable<T> InfiniteIteratorAsync<T>() where T : INumber<T>
     {
-        T increment = T.Zero;
+        return InfiniteIteratorAsync(T.Zero);
+    }
+
+    public static async IAsyncEnumerable<T> InfiniteIteratorAsync<T>(T start) where T : INumber<T>
+    {
         while (true)
         {
             await Task.Yield();
-            yield return increment++;
+            yield return start++;
         }
     }
+
 }

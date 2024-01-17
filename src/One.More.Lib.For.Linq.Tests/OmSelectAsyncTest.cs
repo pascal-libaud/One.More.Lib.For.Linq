@@ -5,11 +5,11 @@ namespace One.More.Lib.For.Linq.Tests;
 public class OmSelectAsyncTest
 {
     [Fact]
-    public async Task OmSelectAsync_should_not_enumerate_early()
+    internal async Task OmSelectAsync_should_not_enumerate_early()
     {
         var spy = new EnumerableSpy();
 
-        var source = spy.GetValues().OmSelectAsync(x => TaskHelper.ToTask<string>(x.ToString()));
+        var source = spy.GetValues().OmSelectAsync(x => x.ToString().ToTask());
         Assert.False(spy.IsEnumerated);
 
         _ = await source.OmTakeAsync(5).OmToListAsync();
@@ -17,7 +17,7 @@ public class OmSelectAsyncTest
     }
 
     [Fact]
-    public async Task OmSelectAsync_should_enumerate_each_item_once()
+    internal async Task OmSelectAsync_should_enumerate_each_item_once()
     {
         var spy = new EnumerableSpy();
 
@@ -26,7 +26,7 @@ public class OmSelectAsyncTest
     }
 
     [Fact]
-    public async Task OmSelectAsync_should_not_make_stack_overflow()
+    internal async Task OmSelectAsync_should_not_make_stack_overflow()
     {
         var spy = new EnumerableSpy();
 
@@ -35,7 +35,7 @@ public class OmSelectAsyncTest
     }
 
     [Fact]
-    public void OmSelectAsync_should_not_throw_when_null_before_enumeration()
+    internal void OmSelectAsync_should_not_throw_when_null_before_enumeration()
     {
         try
         {
@@ -49,7 +49,7 @@ public class OmSelectAsyncTest
     }
 
     [Fact]
-    public void OmSelectAsync_should_throw_when_null_on_enumeration()
+    internal void OmSelectAsync_should_throw_when_null_on_enumeration()
     {
         var func = async () =>
         {
@@ -62,7 +62,7 @@ public class OmSelectAsyncTest
     }
 
     [Fact]
-    public async Task OmSelectAsync_should_work_well_when_not_null()
+    internal async Task OmSelectAsync_should_work_well_when_not_null()
     {
         var source = await LinqHelper.Range(5).OmSelectAsync(x => (x * 2).ToTask()).OmToListAsync();
         var expected = new[] { 0, 2, 4, 6, 8 };

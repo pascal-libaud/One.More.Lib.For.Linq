@@ -5,7 +5,7 @@ namespace One.More.Lib.For.Linq.Tests;
 public class OmPrependTest
 {
     [Fact]
-    public void OmPrepend_should_add_in_end_when_source_not_null()
+    internal void OmPrepend_should_add_in_end_when_source_not_null()
     {
         static IEnumerable<string> GetValues()
         {
@@ -17,7 +17,7 @@ public class OmPrependTest
     }
 
     [Fact]
-    public void OmPrepend_should_work_well_when_source_empty()
+    internal void OmPrepend_should_work_well_when_source_empty()
     {
         static IEnumerable<string> GetValues()
         {
@@ -28,7 +28,7 @@ public class OmPrependTest
     }
 
     [Fact]
-    public void OmPrepend_should_not_throw_when_source_null_without_enumeration()
+    internal void OmPrepend_should_not_throw_when_source_null_without_enumeration()
     {
         static IEnumerable<string> GetValues()
         {
@@ -39,7 +39,7 @@ public class OmPrependTest
     }
 
     [Fact]
-    public void OmPrepend_should_throw_NullReferenceException_when_source_null_on_enumeration()
+    internal void OmPrepend_should_throw_NullReferenceException_when_source_null_on_enumeration()
     {
         static IEnumerable<string> GetValues()
         {

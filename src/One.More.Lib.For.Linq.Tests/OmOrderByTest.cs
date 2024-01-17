@@ -5,7 +5,7 @@ namespace One.More.Lib.For.Linq.Tests;
 public class OmOrderByTest
 {
     [Fact]
-    public void OmOrderBy_should_sort_items()
+    internal void OmOrderBy_should_sort_items()
     {
         var actual = new List<int> { 5, 4, 8, 1 }.OmOrderBy(x => x);
         var expected = new List<int> { 1, 4, 5, 8 };
@@ -13,7 +13,7 @@ public class OmOrderByTest
     }
 
     [Fact]
-    public void OmThenBy_should_not_reorder_items_sorted_by_OmOrderBy()
+    internal void OmThenBy_should_not_reorder_items_sorted_by_OmOrderBy()
     {
 
         Person t1 = new("Tata", 5);

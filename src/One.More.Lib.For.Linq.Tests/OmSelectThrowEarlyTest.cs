@@ -5,14 +5,14 @@ namespace One.More.Lib.For.Linq.Tests;
 public class OmSelectThrowEarlyTest
 {
     [Fact]
-    public void OmSelectThrowEarly_should_throw_when_empty_before_enumeration()
+    internal void OmSelectThrowEarly_should_throw_when_empty_before_enumeration()
     {
         IEnumerable<int> source = LinqHelper.Empty<int>();
         Assert.Throws<InvalidOperationException>(() => source.OmSelectThrowEarly(x => x.ToString()));
     }
 
     [Fact]
-    public void OmSelectThrowEarly_should_work_well_when_not_empty()
+    internal void OmSelectThrowEarly_should_work_well_when_not_empty()
     {
         var source = LinqHelper.Range(5).OmSelectThrowEarly(x => x * 2);
         var expected = new[] { 0, 2, 4, 6, 8 };
@@ -21,7 +21,7 @@ public class OmSelectThrowEarlyTest
     }
 
     [Fact]
-    public void OmSelectThrowEarly_should_not_enumerate_twice()
+    internal void OmSelectThrowEarly_should_not_enumerate_twice()
     {
         var spy = new EnumerableSpy();
 
