@@ -23,3 +23,12 @@ public class AlphabetTest
             Assert.Contains(alphabet, x => x == c);
     }
 }
+
+public class FakeTest
+{
+    [Fact]
+    public void AsserRed()
+    {
+        Assert.True(false);
+    }
+}
