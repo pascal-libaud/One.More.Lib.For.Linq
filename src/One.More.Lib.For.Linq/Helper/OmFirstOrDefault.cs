@@ -23,7 +23,6 @@ public static partial class LinqHelper
 
     private static T? OmFirstOrDefault_Enumerator<T>(this IEnumerable<T> source)
     {
-        throw new NotImplementedException("Test pour valider le pipeline");
         using var enumerator = source.GetEnumerator();
         if(enumerator.MoveNext())
             return enumerator.Current;
