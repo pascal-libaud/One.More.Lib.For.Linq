@@ -25,7 +25,5 @@ public class _Todo
     // Repeat
     // OmGroupBy
 
-    // OmToList, OmToListAsync
-
     // OmWhere, OmWhereAsync
 }
