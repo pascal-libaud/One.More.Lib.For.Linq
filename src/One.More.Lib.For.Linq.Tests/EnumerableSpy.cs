@@ -36,10 +36,10 @@ public class EnumerableSpy
     }
 }
 
-public class EnumerableSpyTest
+public class EnumerableSpyTest : TestBase
 {
     [Fact]
-    internal void EnumerableSpy_should_works_as_expected()
+    public void EnumerableSpy_should_works_as_expected()
     {
         var spy = new EnumerableSpy();
 

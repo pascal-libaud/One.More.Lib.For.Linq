@@ -2,17 +2,17 @@ using One.More.Lib.For.Linq.Helper;
 
 namespace One.More.Lib.For.Linq.Tests;
 
-public class OmSelectThrowEarlyTest
+public class OmSelectThrowEarlyTest : TestBase
 {
     [Fact]
-    internal void OmSelectThrowEarly_should_throw_when_empty_before_enumeration()
+    public void OmSelectThrowEarly_should_throw_when_empty_before_enumeration()
     {
         IEnumerable<int> source = LinqHelper.Empty<int>();
         Assert.Throws<InvalidOperationException>(() => source.OmSelectThrowEarly(x => x.ToString()));
     }
 
     [Fact]
-    internal void OmSelectThrowEarly_should_work_well_when_not_empty()
+    public void OmSelectThrowEarly_should_work_well_when_not_empty()
     {
         var source = LinqHelper.Range(5).OmSelectThrowEarly(x => x * 2);
         var expected = new[] { 0, 2, 4, 6, 8 };
@@ -21,7 +21,7 @@ public class OmSelectThrowEarlyTest
     }
 
     [Fact]
-    internal void OmSelectThrowEarly_should_not_enumerate_twice()
+    public void OmSelectThrowEarly_should_not_enumerate_twice()
     {
         var spy = new EnumerableSpy();
 

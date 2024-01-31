@@ -2,13 +2,13 @@ using One.More.Lib.For.Linq.Helper;
 
 namespace One.More.Lib.For.Linq.Tests;
 
-public class AsEnumerableTest
+public class ToEnumerableTest : TestBase
 {
     [Fact]
-    internal void AsEnumerable_should_return_a_list_containing_only_the_item_passed()
+    public void ToEnumerable_should_return_a_list_containing_only_the_item_passed()
     {
         const int value = 10;
-        var result = value.AsEnumerable();
+        var result = value.ToEnumerable();
         Assert.Single(result, value);
     }
 }

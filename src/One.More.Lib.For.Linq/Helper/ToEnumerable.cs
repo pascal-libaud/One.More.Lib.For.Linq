@@ -2,7 +2,7 @@
 
 public static partial class LinqHelper
 {
-    public static IEnumerable<T> AsEnumerable<T>(this T value)
+    public static IEnumerable<T> ToEnumerable<T>(this T value)
     {
         yield return value;
     }

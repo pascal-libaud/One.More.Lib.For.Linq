@@ -2,17 +2,17 @@
 
 namespace One.More.Lib.For.Linq.Tests;
 
-public class EmptyTest
+public class EmptyTest : TestBase
 {
     [Fact]
-    internal void Empty_should_not_be_null()
+    public void Empty_should_not_be_null()
     {
         var result = LinqHelper.Empty<int>();
         Assert.NotNull(result);
     }
 
     [Fact]
-    internal void Empty_should_be_empty()
+    public void Empty_should_be_empty()
     {
         var result = LinqHelper.Empty<int>().OmToList();
         Assert.Empty(result);

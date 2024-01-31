@@ -2,10 +2,10 @@ using One.More.Lib.For.Linq.Helper;
 
 namespace One.More.Lib.For.Linq.Tests;
 
-public class OmSelectAsyncTest
+public class OmSelectAsyncTest : TestBase
 {
     [Fact]
-    internal async Task OmSelectAsync_should_not_enumerate_early()
+    public async Task OmSelectAsync_should_not_enumerate_early()
     {
         var spy = new EnumerableSpy();
 
@@ -17,7 +17,7 @@ public class OmSelectAsyncTest
     }
 
     [Fact]
-    internal async Task OmSelectAsync_should_enumerate_each_item_once()
+    public async Task OmSelectAsync_should_enumerate_each_item_once()
     {
         var spy = new EnumerableSpy();
 
@@ -26,7 +26,7 @@ public class OmSelectAsyncTest
     }
 
     [Fact]
-    internal async Task OmSelectAsync_should_not_make_stack_overflow()
+    public async Task OmSelectAsync_should_not_make_stack_overflow()
     {
         var spy = new EnumerableSpy();
 
@@ -35,7 +35,7 @@ public class OmSelectAsyncTest
     }
 
     [Fact]
-    internal void OmSelectAsync_should_not_throw_when_null_before_enumeration()
+    public void OmSelectAsync_should_not_throw_when_null_before_enumeration()
     {
         try
         {
@@ -49,7 +49,7 @@ public class OmSelectAsyncTest
     }
 
     [Fact]
-    internal void OmSelectAsync_should_throw_when_null_on_enumeration()
+    public async Task OmSelectAsync_should_throw_when_null_on_enumeration()
     {
         var func = async () =>
         {
@@ -58,11 +58,11 @@ public class OmSelectAsyncTest
             { }
         };
 
-        Assert.ThrowsAsync<NullReferenceException>(func);
+        await Assert.ThrowsAsync<NullReferenceException>(func);
     }
 
     [Fact]
-    internal async Task OmSelectAsync_should_work_well_when_not_null()
+    public async Task OmSelectAsync_should_work_well_when_not_null()
     {
         var source = await LinqHelper.Range(5).OmSelectAsync(x => (x * 2).ToTask()).OmToListAsync();
         var expected = new[] { 0, 2, 4, 6, 8 };

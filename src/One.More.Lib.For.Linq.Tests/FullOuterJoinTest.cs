@@ -2,12 +2,12 @@ using One.More.Lib.For.Linq.Helper;
 
 namespace One.More.Lib.For.Linq.Tests;
 
-public class FullOuterJoinTest
+public class FullOuterJoinTest : TestBase
 {
     // TODO Utiliser OmFullOuterJoin
     [Theory]
     [MemberData(nameof(GetValues))]
-    internal void Test(Mock1[] mocks1, Mock2[] mocks2, Result[] expected)
+    public void Test(Mock1[] mocks1, Mock2[] mocks2, Result[] expected)
     {
         Func<Mock1?, Mock2?, int> comparer = (a, b) =>
         {

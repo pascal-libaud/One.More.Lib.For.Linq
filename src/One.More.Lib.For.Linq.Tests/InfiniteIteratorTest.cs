@@ -2,10 +2,10 @@ using One.More.Lib.For.Linq.Helper;
 
 namespace One.More.Lib.For.Linq.Tests;
 
-public class InfiniteIteratorTest
+public class InfiniteIteratorTest : TestBase
 {
     [Fact]
-    internal async Task InfiniteIterator_should_not_make_infinite_loop()
+    public async Task InfiniteIterator_should_not_make_infinite_loop()
     {
         var iterator = Task.Run(() => LinqHelper.InfiniteIterator<int>().OmTake(4).OmToList().ToTask());
 
