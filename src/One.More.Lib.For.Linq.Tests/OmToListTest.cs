@@ -17,7 +17,16 @@ public class OmToListTest : TestBase
     }
 
     [Fact]
-    public void OmToList_should_enumerate_each_item_one()
+    public void OmToList_should_enumerate_each_item()
+    {
+        var spy = new EnumerableSpy();
+
+        _ = spy.GetValues().OmToList();
+        Assert.Equal(10, spy.CountItemEnumerated);
+    }
+
+    [Fact]
+    public void OmToList_should_enumerate_each_item_once()
     {
         var spy = new EnumerableSpy();
 
