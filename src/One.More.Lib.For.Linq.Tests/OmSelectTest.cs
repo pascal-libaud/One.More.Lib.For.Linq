@@ -17,6 +17,20 @@ public class OmSelectTest : TestBase
     }
 
     [Fact]
+    public void OmSelect_should_enumerate_only_on_demand()
+    {
+        var spy = new EnumerableSpy();
+
+        foreach (var value in spy.GetValues())
+        {
+            if(value == 5)
+                break;
+        }
+
+        Assert.Equal(6, spy.CountItemEnumerated);
+    }
+
+    [Fact]
     public void OmSelect_should_enumerate_each_item_once()
     {
         var spy = new EnumerableSpy();
