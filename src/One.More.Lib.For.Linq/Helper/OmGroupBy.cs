@@ -41,15 +41,16 @@ public static partial class LinqHelper
                 dictionary.Add(key, new List<TValue> { item });
         }
 
-        return dictionary.OmSelect(k => new OmGroup<TKey, TResult>(k.Key, k.Value.OmSelect(v => select(v)).OmToList()));
+        foreach (var kv in dictionary.OmSelect(k => new OmGroup<TKey, TResult>(k.Key, k.Value.OmSelect(v => select(v)))))
+            yield return kv;
     }
 }
 
 file class OmGroup<TKey, TValue> : IOmGroup<TKey, TValue>
 {
-    private readonly List<TValue> _values;
+    private readonly IEnumerable<TValue> _values;
 
-    public OmGroup(TKey key, List<TValue> values)
+    public OmGroup(TKey key, IEnumerable<TValue> values)
     {
         _values = values;
         Key = key;

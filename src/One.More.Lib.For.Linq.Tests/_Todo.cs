@@ -1,29 +1,24 @@
-namespace One.More.Lib.For.Linq.Tests;
+// TODO Créer les tests pour les méthodes ci-dessous
 
-public class _Todo
-{
-    // TODO Créer les tests pour les méthodes ci-dessous
+//InfiniteIteratorAsync : comment le tester efficacement ?
 
-    //InfiniteIteratorAsync
+// OmAggregate (3 méthodes différentes)
+// Log<T>
+// OmCount
+// OmCountAsync
+// OmTake<T>
+// OmTakeAsync<T>
 
-    // OmAggregate (3 méthodes différentes)
-    // Log<T>
-    // OmCount
-    // OmCountAsync
-    // OmTake<T>
-    // OmTakeAsync<T>
+// OmZip<T, U, V>
+// OmZipFull<T, U, V>
 
-    // OmZip<T, U, V>
-    // OmZipFull<T, U, V>
+// OmDistinct<T> vérifier qu'on n'énumère pas toute la liste dès le début, via un break dans le test.
+// OmDistinctAsync
 
-    // OmDistinct<T> vérifier qu'on n'énumère pas toute la liste dès le début, via un break dans le test.
-    // OmDistinctAsync
+// Range
+// RangeAsync
 
-    // Range
-    // RangeAsync
+// Repeat
+// OmGroupBy
 
-    // Repeat
-    // OmGroupBy
-
-    // OmWhere, OmWhereAsync
-}
+// OmWhere, OmWhereAsync
