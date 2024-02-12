@@ -15,5 +15,4 @@ public static partial class LinqHelper
             yield return start++;
         }
     }
-
 }

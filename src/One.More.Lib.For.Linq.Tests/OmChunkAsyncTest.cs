@@ -22,15 +22,9 @@ public class OmChunkAsyncTest : TestBase
     [Fact]
     public async Task OmChunk_should_not_enumerate_early()
     {
-        var spy = new SpyEnumerable();
-
-        var source = spy.GetValuesAsync().OmChunkAsync(3);
-        Assert.False(spy.IsEnumerated);
-
-        _ = await source.OmTakeAsync(5).OmToListAsync();
-        Assert.True(spy.IsEnumerated);
+        var omChunkAsync = (IAsyncEnumerable<int> x) => x.OmChunkAsync(3);
+        await omChunkAsync.Should_not_enumerate_early();
     }
-
 
     [Fact]
     public async Task OmChunk_should_enumerate_each_item_once()

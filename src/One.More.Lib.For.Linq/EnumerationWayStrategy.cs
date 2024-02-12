@@ -1,9 +1,8 @@
-﻿
-namespace One.More.Lib.For.Linq;
+﻿namespace One.More.Lib.For.Linq;
 
 internal static class EnumerationWayStrategy
 {
-    public static EnumerationWay FocusOn = EnumerationWay.Foreach;
+    internal static EnumerationWay FocusOn = EnumerationWay.Foreach;
 }
 
 internal enum EnumerationWay
