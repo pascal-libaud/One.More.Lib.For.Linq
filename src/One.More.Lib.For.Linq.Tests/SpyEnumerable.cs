@@ -2,7 +2,7 @@ using One.More.Lib.For.Linq.Helper;
 
 namespace One.More.Lib.For.Linq.Tests;
 
-public class EnumerableSpy
+public class SpyEnumerable
 {
     public bool IsEnumerated { get; private set; } = false;
     public bool IsEndReached { get; private set; } = false;
@@ -36,12 +36,12 @@ public class EnumerableSpy
     }
 }
 
-public class EnumerableSpyTest : TestBase
+public class SpyEnumerableTest : TestBase
 {
     [Fact]
-    public void EnumerableSpy_should_works_as_expected()
+    public void SpyEnumerable_should_work_as_expected()
     {
-        var spy = new EnumerableSpy();
+        var spy = new SpyEnumerable();
 
         Assert.False(spy.IsEnumerated);
         Assert.False(spy.IsEndReached);

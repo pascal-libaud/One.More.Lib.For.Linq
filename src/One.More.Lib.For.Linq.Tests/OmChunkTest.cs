@@ -5,9 +5,9 @@ namespace One.More.Lib.For.Linq.Tests;
 public class OmChunkTest : TestBase
 {
     [Fact]
-    public void OmChunk_should_work_as_well()
+    public void OmChunk_should_work_as_expected()
     {
-        var spy = new EnumerableSpy();
+        var spy = new SpyEnumerable();
 
         var result = spy.GetValues().OmChunk(3).OmToList();
 
@@ -22,7 +22,7 @@ public class OmChunkTest : TestBase
     [Fact]
     public void OmChunk_should_not_enumerate_early()
     {
-        var spy = new EnumerableSpy();
+        var spy = new SpyEnumerable();
 
         var source = spy.GetValues().OmChunk(3);
         Assert.False(spy.IsEnumerated);
@@ -34,7 +34,7 @@ public class OmChunkTest : TestBase
     [Fact]
     public void OmChunk_should_enumerate_each_item_once()
     {
-        var spy = new EnumerableSpy();
+        var spy = new SpyEnumerable();
 
         _ = spy.GetValues().OmChunk(3).OmToList();
         Assert.Equal(1, spy.CountEnumeration);

@@ -7,7 +7,7 @@ public class OmSelectTest : TestBase
     [Fact]
     public void OmSelect_should_not_enumerate_early()
     {
-        var spy = new EnumerableSpy();
+        var spy = new SpyEnumerable();
 
         var source = spy.GetValues().OmSelect(x => x.ToString());
         Assert.False(spy.IsEnumerated);
@@ -19,7 +19,7 @@ public class OmSelectTest : TestBase
     [Fact]
     public void OmSelect_should_enumerate_only_on_demand()
     {
-        var spy = new EnumerableSpy();
+        var spy = new SpyEnumerable();
 
         foreach (var value in spy.GetValues())
         {
@@ -33,7 +33,7 @@ public class OmSelectTest : TestBase
     [Fact]
     public void OmSelect_should_enumerate_each_item_once()
     {
-        var spy = new EnumerableSpy();
+        var spy = new SpyEnumerable();
 
         _ = spy.GetValues().OmSelect(x => x.ToString()).OmToList();
         Assert.Equal(1, spy.CountEnumeration);
@@ -42,7 +42,7 @@ public class OmSelectTest : TestBase
     [Fact]
     public void OmSelect_should_not_make_stack_overflow()
     {
-        var spy = new EnumerableSpy();
+        var spy = new SpyEnumerable();
 
         _ = spy.GetValues().OmSelect(x => x.ToString()).OmTake(5).OmToList();
         Assert.False(spy.IsEndReached);

@@ -23,7 +23,7 @@ public class OmSelectThrowEarlyTest : TestBase
     [Fact]
     public void OmSelectThrowEarly_should_not_enumerate_twice()
     {
-        var spy = new EnumerableSpy();
+        var spy = new SpyEnumerable();
 
         var source = spy.GetValues().OmSelectThrowEarly(x => x.ToString());
 
