@@ -4,7 +4,6 @@
 
 // OmAggregate (3 méthodes différentes)
 // Log<T>
-// OmCount
 // OmCountAsync
 // OmTake<T>
 // OmTakeAsync<T>

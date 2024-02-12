@@ -4,6 +4,12 @@ public static partial class LinqHelper
 {
     public static int OmCount<T>(this IEnumerable<T> source)
     {
+        if (source is ICollection<T> collection)
+            return collection.Count;
+
+        if(source is T[] array)
+            return array.Length;
+
         int result = 0;
         foreach (var _ in source)
             result++;
