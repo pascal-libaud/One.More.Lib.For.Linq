@@ -22,13 +22,8 @@ public class OmChunkTest : TestBase
     [Fact]
     public void OmChunk_should_not_enumerate_early()
     {
-        var spy = new SpyEnumerable();
-
-        var source = spy.GetValues().OmChunk(3);
-        Assert.False(spy.IsEnumerated);
-
-        _ = source.OmTake(5).OmToList();
-        Assert.True(spy.IsEnumerated);
+        var omChunk = (IEnumerable<int> x) => x.OmChunk(3);
+        omChunk.Should_not_enumerate_early();
     }
 
     [Fact]

@@ -7,13 +7,8 @@ public class OmSelectTest : TestBase
     [Fact]
     public void OmSelect_should_not_enumerate_early()
     {
-        var spy = new SpyEnumerable();
-
-        var source = spy.GetValues().OmSelect(x => x.ToString());
-        Assert.False(spy.IsEnumerated);
-
-        _ = source.OmTake(5).OmToList();
-        Assert.True(spy.IsEnumerated);
+        var omSelect = (IEnumerable<int> x) => x.OmSelect(y => y.ToString());
+        omSelect.Should_not_enumerate_early();
     }
 
     [Fact]
