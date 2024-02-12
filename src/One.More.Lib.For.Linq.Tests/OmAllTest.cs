@@ -13,7 +13,7 @@ public class OmAllTest : TestBase
     [Fact]
     public void OmAll_should_not_enumerate_all_when_one_false()
     {
-        var spy = new EnumerableSpy();
+        var spy = new SpyEnumerable();
 
         Assert.False(spy.GetValues().OmAll(x => x < 8));
         Assert.False(spy.IsEndReached);
