@@ -7,6 +7,7 @@ public class OmSelectAsyncTest : TestBase
     [Fact]
     public async Task OmSelectAsync_should_not_enumerate_early()
     {
+        // TODO Voir si on peut utiliser TestHelper.Verify_method_should_not_enumerate_early
         var spy = new SpyEnumerable();
 
         var source = spy.GetValues().OmSelectAsync(x => x.ToString().ToTask());

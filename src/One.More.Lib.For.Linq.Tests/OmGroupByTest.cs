@@ -8,13 +8,8 @@ public class OmGroupByTest : TestBase
     [Fact]
     public void OmGroupBy_should_not_enumerate_early()
     {
-        var spy = new SpyEnumerable();
-
-        var source = spy.GetValues().GroupBy(x => x.ToString());
-        Assert.False(spy.IsEnumerated);
-
-        _ = source.OmTake(5).OmToList();
-        Assert.True(spy.IsEnumerated);
+        var omGroupBy = (IEnumerable<int> x) => x.OmGroupBy(y => y.ToString());
+        omGroupBy.Should_not_enumerate_early();
     }
 
     [Fact]

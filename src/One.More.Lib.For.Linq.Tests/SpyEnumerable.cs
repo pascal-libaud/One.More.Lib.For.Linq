@@ -4,14 +4,13 @@ namespace One.More.Lib.For.Linq.Tests;
 
 public class SpyEnumerable
 {
-    public bool IsEnumerated { get; private set; } = false;
+    public bool IsEnumerated => CountEnumeration != 0;
     public bool IsEndReached { get; private set; } = false;
     public int CountEnumeration { get; private set; } = 0;
     public int CountItemEnumerated { get; private set; } = 0;
 
     public IEnumerable<int> GetValues()
     {
-        IsEnumerated = true;
         CountEnumeration++;
         foreach (var item in LinqHelper.Range(10))
         {
@@ -24,7 +23,6 @@ public class SpyEnumerable
 
     public async IAsyncEnumerable<int> GetValuesAsync()
     {
-        IsEnumerated = true;
         CountEnumeration++;
         await foreach (var item in LinqHelper.RangeAsync(10))
         {
