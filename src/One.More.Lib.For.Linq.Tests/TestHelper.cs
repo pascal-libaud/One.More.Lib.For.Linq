@@ -17,16 +17,16 @@ public static class TestHelper
 
     public static async Task Should_not_enumerate_early<T>(this Func<IAsyncEnumerable<int>, IAsyncEnumerable<T>> func)
     {
-        var spy = new SpyEnumerableLegacy();
+        var spy = SpyAsyncEnumerable.GetValuesAsync();
 
-        var source = func(spy.GetValuesAsync());
+        var source = func(spy);
         Assert.False(spy.IsEnumerated);
 
         _ = await source.OmTakeAsync(5).OmToListAsync();
         Assert.True(spy.IsEnumerated);
     }
 
-    public static void Should_enumerate_each_item_once<T>(this Func<IEnumerable<int>, T> func,ISpyEnumerable<int>? spy = null)
+    public static void Should_enumerate_each_item_once<T>(this Func<IEnumerable<int>, T> func, ISpyEnumerable<int>? spy = null)
     {
         spy ??= SpyEnumerable.GetValues();
 
@@ -36,9 +36,9 @@ public static class TestHelper
 
     public static async Task Should_enumerate_each_item_once<T>(this Func<IAsyncEnumerable<int>, Task<T>> func)
     {
-        var spy = new SpyEnumerableLegacy();
+        var spy = SpyAsyncEnumerable.GetValuesAsync();
 
-        _ = await func(spy.GetValuesAsync());
+        _ = await func(spy);
         Assert.Equal(1, spy.CountEnumeration);
     }
 
@@ -52,9 +52,9 @@ public static class TestHelper
 
     public static async Task Should_not_enumerate_all_when<T>(this Func<IAsyncEnumerable<int>, Task<T>> func)
     {
-        var spy = new SpyEnumerableLegacy();
+        var spy = SpyAsyncEnumerable.GetValuesAsync();
 
-        _ = await func(spy.GetValuesAsync());
+        _ = await func(spy);
         Assert.False(spy.IsEndReached);
     }
 }

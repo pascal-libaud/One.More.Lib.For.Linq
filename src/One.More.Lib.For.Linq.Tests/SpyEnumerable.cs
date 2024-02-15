@@ -40,7 +40,7 @@ public class SpyEnumerableTest : TestBase
     [Fact]
     public void SpyEnumerable_should_work_as_expected()
     {
-        var spy = new SpyEnumerable<int>(LinqHelper.Range(10));
+        var spy = SpyEnumerable.GetValues();
 
         Assert.False(spy.IsEnumerated);
         Assert.False(spy.IsEndReached);

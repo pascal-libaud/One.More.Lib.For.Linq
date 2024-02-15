@@ -8,4 +8,6 @@ public interface ISpy
     int CountItemEnumerated { get; set; }
 }
 
-public interface ISpyEnumerable<T> : ISpy, IEnumerable<T> { }
+public interface ISpyEnumerable<out T> : ISpy, IEnumerable<T> { }
+
+public interface ISpyAsyncEnumerable<out T> : ISpy, IAsyncEnumerable<T> { }
