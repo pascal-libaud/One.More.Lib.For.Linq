@@ -2,7 +2,7 @@ using System.Collections;
 
 namespace One.More.Lib.For.Linq.Tests;
 
-public class SpyReadOnlyList<T> : IReadOnlyList<T>
+public class SpyReadOnlyList<T> : IReadOnlyList<T>, ISpyEnumerable<T>
 {
     private readonly IReadOnlyList<T> _list;
 
@@ -11,12 +11,14 @@ public class SpyReadOnlyList<T> : IReadOnlyList<T>
         _list = list;
     }
 
-    public int CountEnumeration { get; private set; } = 0;
-    public int CountItemEnumerated { get; private set; } = 0;
+    public bool IsEnumerated => CountEnumeration != 0;
+    public bool IsEndReached { get; set; } = false;
+    public int CountEnumeration { get; set; } = 0;
+    public int CountItemEnumerated { get; set; } = 0;
 
     public IEnumerator<T> GetEnumerator()
     {
-        return new SpyEnumerator<T>(_list.GetEnumerator(), () => CountEnumeration++, () => CountItemEnumerated++);
+        return new SpyEnumerator<T>(this, _list.GetEnumerator());
     }
 
     IEnumerator IEnumerable.GetEnumerator()
@@ -33,52 +35,6 @@ public class SpyReadOnlyList<T> : IReadOnlyList<T>
             CountItemEnumerated++;
             return _list[index];
         }
-    }
-}
-
-file class SpyEnumerator<T> : IEnumerator<T>
-{
-    private bool _firstCallMade = false;
-    private readonly IEnumerator<T> _enumerator;
-    private readonly Action _incrementIterations;
-    private readonly Action _incrementEnumerations;
-
-    public SpyEnumerator(IEnumerator<T> enumerator, Action incrementIterations, Action incrementEnumerations)
-    {
-        _enumerator = enumerator;
-        _incrementIterations = incrementIterations;
-        _incrementEnumerations = incrementEnumerations;
-    }
-
-    public bool MoveNext()
-    {
-        if (!_firstCallMade)
-        {
-            _incrementIterations();
-            _firstCallMade = true;
-        }
-
-        var result = _enumerator.MoveNext();
-
-        if (result)
-            _incrementEnumerations();
-
-        return result;
-    }
-
-    public void Reset()
-    {
-        _incrementIterations();
-        _enumerator.Reset();
-    }
-
-    public T Current => _enumerator.Current;
-
-    object IEnumerator.Current => ((IEnumerator)_enumerator).Current;
-
-    public void Dispose()
-    {
-        _enumerator.Dispose();
     }
 }
 

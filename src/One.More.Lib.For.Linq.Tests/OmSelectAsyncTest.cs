@@ -8,9 +8,9 @@ public class OmSelectAsyncTest : TestBase
     public async Task OmSelectAsync_should_not_enumerate_early()
     {
         // TODO Voir si on peut utiliser TestHelper.Verify_method_should_not_enumerate_early
-        var spy = new SpyEnumerable();
+        var spy = SpyEnumerable.GetValues();
 
-        var source = spy.GetValues().OmSelectAsync(x => x.ToString().ToTask());
+        var source = spy.OmSelectAsync(x => x.ToString().ToTask());
         Assert.False(spy.IsEnumerated);
 
         _ = await source.OmTakeAsync(5).OmToListAsync();
@@ -18,20 +18,18 @@ public class OmSelectAsyncTest : TestBase
     }
 
     [Fact]
-    public async Task OmSelectAsync_should_enumerate_each_item_once()
+    public void OmSelectAsync_should_enumerate_each_item_once()
     {
-        var spy = new SpyEnumerable();
-
-        _ = await spy.GetValues().OmSelectAsync(x => x.ToString().ToTask()).OmToListAsync();
-        Assert.Equal(1, spy.CountEnumeration);
+        var omSelectAsync = async (IEnumerable<int> x) => await x.OmSelectAsync(z => z.ToString().ToTask()).OmToListAsync();
+        omSelectAsync.Should_enumerate_each_item_once();
     }
 
     [Fact]
     public async Task OmSelectAsync_should_not_make_stack_overflow()
     {
-        var spy = new SpyEnumerable();
+        var spy = SpyEnumerable.GetValues();
 
-        _ = await spy.GetValues().OmSelectAsync(x => x.ToString().ToTask()).OmTakeAsync(5).OmToListAsync();
+        _ = await spy.OmSelectAsync(x => x.ToString().ToTask()).OmTakeAsync(5).OmToListAsync();
         Assert.False(spy.IsEndReached);
     }
 

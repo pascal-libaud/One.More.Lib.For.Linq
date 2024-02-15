@@ -7,7 +7,7 @@ public class OmChunkAsyncTest : TestBase
     [Fact]
     public async Task OmChunk_should_work_as_expected()
     {
-        var spy = new SpyEnumerable();
+        var spy = new SpyEnumerableLegacy();
 
         var result = await spy.GetValuesAsync().OmChunkAsync(3).OmToListAsync();
 
@@ -29,7 +29,7 @@ public class OmChunkAsyncTest : TestBase
     [Fact]
     public async Task OmChunk_should_enumerate_each_item_once()
     {
-        var spy = new SpyEnumerable();
+        var spy = new SpyEnumerableLegacy();
 
         _ = await spy.GetValuesAsync().OmChunkAsync(3).OmToListAsync();
         Assert.Equal(1, spy.CountEnumeration);
