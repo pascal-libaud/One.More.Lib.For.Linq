@@ -19,9 +19,9 @@ public class OmToListAsyncTest : TestBase
     [Fact]
     public async Task OmToList_should_enumerate_each_item()
     {
-        var spy = new SpyEnumerableLegacy();
+        var spy = SpyAsyncEnumerable.GetValuesAsync();
 
-        _ = await spy.GetValuesAsync().OmToListAsync();
+        _ = await spy.OmToListAsync();
         Assert.Equal(10, spy.CountItemEnumerated);
     }
 
