@@ -7,9 +7,7 @@ public class OmChunkTest : TestBase
     [Fact]
     public void OmChunk_should_work_as_expected()
     {
-        var spy = new SpyEnumerable();
-
-        var result = spy.GetValues().OmChunk(3).OmToList();
+        var result = SpyEnumerable.GetValues().OmChunk(3).OmToList();
 
         Assert.Equal(4, result.Count);
 
@@ -29,9 +27,7 @@ public class OmChunkTest : TestBase
     [Fact]
     public void OmChunk_should_enumerate_each_item_once()
     {
-        var spy = new SpyEnumerable();
-
-        _ = spy.GetValues().OmChunk(3).OmToList();
-        Assert.Equal(1, spy.CountEnumeration);
+        var omChunk = (IEnumerable<int> x) => x.OmChunk(3).OmToList();
+        omChunk.Should_enumerate_each_item_once();
     }
 }

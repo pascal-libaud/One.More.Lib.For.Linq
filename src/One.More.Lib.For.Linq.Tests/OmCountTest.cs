@@ -8,17 +8,15 @@ public class OmCountTest : TestBase
     [Fact]
     public void OmCount_should_work_as_expected()
     {
-        var spy = new SpyEnumerable();
-
-        Assert.Equal(10, spy.GetValues().OmCount());
+        Assert.Equal(10, SpyEnumerable.GetValues().OmCount());
     }
 
     [Fact]
     public void OmCount_should_enumerate_only_once()
     {
-        var spy = new SpyEnumerable();
+        var spy = SpyEnumerable.GetValues();
 
-        _ = spy.GetValues().OmCount();
+        _ = spy.OmCount();
         Assert.Equal(1, spy.CountEnumeration);
     }
 

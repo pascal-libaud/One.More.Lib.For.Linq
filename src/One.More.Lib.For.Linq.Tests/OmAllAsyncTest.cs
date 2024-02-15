@@ -14,9 +14,12 @@ public class OmAllAsyncTest : TestBase
     [Fact]
     public async Task OmAllAsync_should_not_enumerate_all_when_one_false()
     {
-        var spy = new SpyEnumerable();
+        var spy = new SpyEnumerableLegacy();
 
         Assert.False(await spy.GetValuesAsync().OmAllAsync(x => x < 8));
         Assert.False(spy.IsEndReached);
+
+        var omAll = async (IAsyncEnumerable<int> x) => await x.OmAllAsync(z => z < 8);
+        await omAll.Should_not_enumerate_all_when();
     }
 }

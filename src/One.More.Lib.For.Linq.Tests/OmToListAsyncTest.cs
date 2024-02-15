@@ -19,7 +19,7 @@ public class OmToListAsyncTest : TestBase
     [Fact]
     public async Task OmToList_should_enumerate_each_item()
     {
-        var spy = new SpyEnumerable();
+        var spy = new SpyEnumerableLegacy();
 
         _ = await spy.GetValuesAsync().OmToListAsync();
         Assert.Equal(10, spy.CountItemEnumerated);
@@ -28,9 +28,7 @@ public class OmToListAsyncTest : TestBase
     [Fact]
     public async Task OmToListAsync_should_enumerate_each_item_once()
     {
-        var spy = new SpyEnumerable();
-
-        _ = await spy.GetValuesAsync().OmToListAsync();
-        Assert.Equal(1, spy.CountEnumeration);
+        var omToListAsync = async (IAsyncEnumerable<int> x) => await x.OmToListAsync();
+        await omToListAsync.Should_enumerate_each_item_once();
     }
 }

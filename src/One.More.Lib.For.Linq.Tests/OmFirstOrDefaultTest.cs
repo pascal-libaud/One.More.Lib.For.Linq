@@ -7,17 +7,15 @@ public class OmFirstOrDefaultTest : TestBase
     [Fact]
     public void OmFirstOrDefault_without_predicate_should_not_enumerate_all_when_item_found()
     {
-        var spy = new SpyEnumerable();
-        _ = spy.GetValues().OmFirstOrDefault();
-        Assert.Equal(1, spy.CountItemEnumerated);
+        var omFirstOrDefault = (IEnumerable<int> x) => x.OmFirstOrDefault();
+        omFirstOrDefault.Should_not_enumerate_all_when();
     }
 
     [Fact]
     public void OmFirstOrDefault_with_predicate_should_not_enumerate_all_when_item_found()
     {
-        var spy = new SpyEnumerable();
-        _ = spy.GetValues().OmFirstOrDefault(x => x == 5);
-        Assert.Equal(6, spy.CountItemEnumerated);
+        var omFirstOrDefault = (IEnumerable<int> x) => x.OmFirstOrDefault(z => z == 5);
+        omFirstOrDefault.Should_not_enumerate_all_when();
     }
 
     [Fact]

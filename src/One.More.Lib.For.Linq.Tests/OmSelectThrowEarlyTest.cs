@@ -23,9 +23,9 @@ public class OmSelectThrowEarlyTest : TestBase
     [Fact]
     public void OmSelectThrowEarly_should_not_enumerate_twice()
     {
-        var spy = new SpyEnumerable();
+        var spy = SpyEnumerable.GetValues();
 
-        var source = spy.GetValues().OmSelectThrowEarly(x => x.ToString());
+        var source = spy.OmSelectThrowEarly(x => x.ToString());
 
         // Assert.Equal(1, countEnumerations); // A ne pas tester ici car ce n'est pas ce qu'on cherche à vérifier
 

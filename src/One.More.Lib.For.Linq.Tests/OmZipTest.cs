@@ -7,9 +7,9 @@ public class OmZipTest : TestBase
     [Fact]
     public void OmZip_should_not_make_stack_overflow()
     {
-        var spy = new SpyEnumerable();
+        var spy = SpyEnumerable.GetValues();
 
-        _ = spy.GetValues().OmZip(LinqHelper.Range(10)).OmTake(3).OmToList();
+        _ = spy.OmZip(LinqHelper.Range(10)).OmTake(3).OmToList();
         Assert.False(spy.IsEndReached);
     }
 

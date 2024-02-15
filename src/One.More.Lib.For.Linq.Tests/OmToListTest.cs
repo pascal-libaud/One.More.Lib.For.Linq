@@ -19,18 +19,16 @@ public class OmToListTest : TestBase
     [Fact]
     public void OmToList_should_enumerate_each_item()
     {
-        var spy = new SpyEnumerable();
+        var spy = SpyEnumerable.GetValues();
 
-        _ = spy.GetValues().OmToList();
+        _ = spy.OmToList();
         Assert.Equal(10, spy.CountItemEnumerated);
     }
 
     [Fact]
     public void OmToList_should_enumerate_each_item_once()
     {
-        var spy = new SpyEnumerable();
-
-        _ = spy.GetValues().OmToList();
-        Assert.Equal(1, spy.CountEnumeration);
+        var omToList = (IEnumerable<int> x) => x.OmToList();
+        omToList.Should_enumerate_each_item_once();
     }
 }

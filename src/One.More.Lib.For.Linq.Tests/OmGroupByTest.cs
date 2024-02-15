@@ -15,9 +15,9 @@ public class OmGroupByTest : TestBase
     [Fact]
     public void OmGroupBy_enumerate_all_when_first_demanded()
     {
-        var spy = new SpyEnumerable();
+        var spy = SpyEnumerable.GetValues();
 
-        var source = spy.GetValues().OmGroupBy(x => x.ToString());
+        var source = spy.OmGroupBy(x => x.ToString());
         _ = source.First();
 
         Assert.True(spy.IsEndReached);
