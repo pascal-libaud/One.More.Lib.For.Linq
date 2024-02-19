@@ -40,5 +40,4 @@ public static partial class LinqHelper
     {
         return source1.FullOuterJoin(source2, comparer.Compare);
     }
-
 }
