@@ -6,6 +6,9 @@ public static partial class LinqHelper
 {
     public static IEnumerable<U> OmSelect<T, U>(this IEnumerable<T> source, Func<T, U> selector)
     {
+        if (source is ICollection<T> collection)
+            return new SelectCollection<T, U>(collection, selector);
+
         return EnumerationWayStrategy.FocusOn switch
         {
             EnumerationWay.Foreach => source.OmSelect_Foreach(selector),
@@ -31,6 +34,30 @@ public static partial class LinqHelper
     {
         return new SelectEnumerable<T, U>(source, selector);
     }
+}
+
+file class SelectCollection<T, U> : IEnumerable<U>, IWithCount
+{
+    private readonly ICollection<T> _collection;
+    private readonly Func<T, U> _selector;
+
+    public SelectCollection(ICollection<T> collection, Func<T, U> selector)
+    {
+        _collection = collection;
+        _selector = selector;
+    }
+
+    public IEnumerator<U> GetEnumerator()
+    {
+        return new SelectEnumerator<T, U>(_collection.GetEnumerator(), _selector);
+    }
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
+    }
+
+    public int Count => _collection.Count;
 }
 
 file class SelectEnumerable<T, U> : IEnumerable<U>

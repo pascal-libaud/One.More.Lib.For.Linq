@@ -10,6 +10,9 @@ public static partial class LinqHelper
         if(source is T[] array)
             return array.Length;
 
+        if (source is IWithCount sourceWithCount)
+            return sourceWithCount.Count;
+
         int result = 0;
         foreach (var _ in source)
             result++;
