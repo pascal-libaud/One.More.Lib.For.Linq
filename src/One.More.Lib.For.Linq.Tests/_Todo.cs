@@ -13,7 +13,9 @@
 // OmZipFull<T, U, V>
 
 // OmDistinct<T> vérifier qu'on n'énumère pas toute la liste dès le début, via un break dans le test.
+// OmDistinctBy
 // OmDistinctAsync
+// OmDistinctByAsync
 
 // Range
 // RangeAsync
