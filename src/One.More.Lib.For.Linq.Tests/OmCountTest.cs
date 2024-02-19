@@ -1,4 +1,3 @@
-using System.Linq;
 using One.More.Lib.For.Linq.Helper;
 
 namespace One.More.Lib.For.Linq.Tests;
@@ -29,13 +28,15 @@ public class OmCountTest : TestBase
         Assert.Equal(0, spy.CountEnumeration);
         Assert.Equal(0, spy.CountItemEnumerated);
 
-        // TODO : Voir ce qu'on en fait car le comportement du .Count() diffère si c'est une IList ou une IReadOnlyList
-        // IList => CountEnumeration : 0
-        // IReadOnlyList => CountEnumeration : 1
-        // De plus, CountItemEnumerated = 10 car les devs se servent du Count() pour tout énumérer sans faire de montée en mémoire contrairement à .ToList()
+        // Linq IList         => CountEnumeration : 0
+        // Linq IReadOnlyList => CountEnumeration : 1
+        // LinqHelper (all)   => CountEnumeration : 0
 
-        //_ = spy.Select(x => x.ToString()).Count();
-        //Assert.Equal(0, spy.CountEnumeration);
-        //Assert.Equal(0, spy.CountItemEnumerated);
+        // Linq       CountItemEnumerated = 10 // certains devs se servent du Count() pour tout énumérer sans faire de montée en mémoire contrairement à .ToList()
+        // LinqHelper CountItemEnumerated = 0  // LinqHelper propose uniquement la version optimisée, pour tout évaluer, préférer utiliser ...(todo)
+
+        _ = spy.OmSelect(x => x.ToString()).OmCount();
+        Assert.Equal(0, spy.CountEnumeration);
+        Assert.Equal(0, spy.CountItemEnumerated);
     }
 }
