@@ -1,4 +1,4 @@
-﻿namespace One.More.Lib.For.Linq;
+﻿namespace One.More.Lib.For.Linq.Tests;
 
 public static class TaskHelper
 {
