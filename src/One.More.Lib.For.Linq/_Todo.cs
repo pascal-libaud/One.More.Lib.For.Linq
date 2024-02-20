@@ -4,7 +4,6 @@
 // Enumerable.DefaultIfEmpty()
 // Enumerable.OfType<>()
 // Enumerable.CastAsync()
-// Enumerable.SelectMany()
 
 // ForEach()
 // GroupByAsync
@@ -22,6 +21,8 @@
 
 // Enumerable.Last()
 // Enumerable.LastOrDefault()
+
+// Repeat
 
 // Enumerable.ToArray()
 // Enumerable.ToDictionary()
