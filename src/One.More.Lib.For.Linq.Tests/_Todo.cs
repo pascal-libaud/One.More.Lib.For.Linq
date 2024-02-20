@@ -5,6 +5,7 @@
 // OmAppendAsync, OmPrependAsync
 // OmAggregate (3 méthodes différentes)
 // OmCountAsync
+// OnSelectMany, OmSelectManyAsync
 // OmTake<T>
 // OmTakeAsync<T>
 
@@ -19,7 +20,6 @@
 // Range
 // RangeAsync
 
-// Repeat
 // OmGroupBy
 
 // OmWhere, OmWhereAsync
