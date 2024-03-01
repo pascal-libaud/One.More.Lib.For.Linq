@@ -46,4 +46,18 @@ public class OmFirstOrDefaultTest : TestBase
         var result = LinqHelper.RangeNullable(0, 10).OmFirstOrDefault(x => x == 20);
         Assert.Null(result);
     }
+
+    [Fact]
+    public void OmFirstOrDefault_without_predicate_should_not_throw_when_no_item_found()
+    {
+        var func = () => LinqHelper.Empty<int?>().OmFirstOrDefault();
+        func.Should().NotThrow();
+    }
+
+    [Fact]
+    public void OmFirstOrDefault_with_predicate_should_not_throw_when_no_item_found()
+    {
+        var func = () => LinqHelper.RangeNullable(0, 10).OmFirstOrDefault(x => x == 20);
+        func.Should().NotThrow();
+    }
 }
