@@ -1,5 +1,3 @@
-using One.More.Lib.For.Linq.Helper;
-
 namespace One.More.Lib.For.Linq.Tests;
 
 public class FullOuterJoinTest : TestBase
@@ -35,8 +33,8 @@ public class FullOuterJoinTest : TestBase
         var m23 = new Mock2(3, "Y");
         var m24 = new Mock2(4, "X");
 
-        var mocks1 = new[] { m11, m12, m14 };
-        var mocks2 = new[] { m21, m23, m24 };
+        Mock1[] mocks1 = [m11, m12, m14];
+        Mock2[] mocks2 = [m21, m23, m24];
 
         var expected = new Result[]
         {
@@ -46,30 +44,30 @@ public class FullOuterJoinTest : TestBase
             new(4, 4)
         };
 
-        yield return new object[] { mocks1, mocks2, expected };
+        yield return [mocks1, mocks2, expected];
 
-        mocks1 = Array.Empty<Mock1>();
+        mocks1 = [];
 
-        expected = new Result[]
-        {
+        expected =
+        [
             new(null, 1),
             new(null, 3),
             new(null, 4)
-        };
+        ];
 
-        yield return new object[] { mocks1, mocks2, expected };
+        yield return [mocks1, mocks2, expected];
 
-        mocks1 = new[] { m11, m12, m14 };
-        mocks2 = Array.Empty<Mock2>();
+        mocks1 = [m11, m12, m14];
+        mocks2 = [];
 
-        expected = new Result[]
-        {
+        expected =
+        [
             new(1, null),
             new(2, null),
             new(4, null)
-        };
+        ];
 
-        yield return new object[] { mocks1, mocks2, expected };
+        yield return [mocks1, mocks2, expected];
     }
 }
 

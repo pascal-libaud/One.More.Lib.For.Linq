@@ -1,5 +1,3 @@
-using One.More.Lib.For.Linq.Helper;
-
 namespace One.More.Lib.For.Linq.Tests;
 
 public class OmOrderByTest : TestBase
@@ -22,7 +20,7 @@ public class OmOrderByTest : TestBase
         Person t4 = new("Toto", 9);
 
         var actual = new List<Person> { t1, t2, t3, t4 }.OmOrderBy(x => x.Name).OmThenBy(x => x.Age);
-        var expected = new List<Person> {t1, t3, t4, t2 };
+        var expected = new List<Person> { t1, t3, t4, t2 };
         Assert.Equal(expected, actual);
     }
 }

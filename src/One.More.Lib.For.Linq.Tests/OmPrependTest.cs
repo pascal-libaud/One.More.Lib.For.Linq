@@ -1,6 +1,4 @@
-﻿using One.More.Lib.For.Linq.Helper;
-
-namespace One.More.Lib.For.Linq.Tests;
+﻿namespace One.More.Lib.For.Linq.Tests;
 
 public class OmPrependTest : TestBase
 {
