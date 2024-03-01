@@ -40,7 +40,7 @@ public static partial class LinqHelper
             var candidate = enumerator.Current;
 
             if (enumerator.MoveNext())
-                throw new NullReferenceException("Patin couffin !");
+                throw new InvalidOperationException("Sequence contains more than one element");
 
             return candidate;
         }
