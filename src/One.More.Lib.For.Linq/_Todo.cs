@@ -15,7 +15,6 @@
 // Nouveautés .Net 9
 // Enumerable.CountBy, AggregateBy, Index
 
-// Enumerable.Single()
 // Enumerable.SingleOrDefault()
 
 // Enumerable.Last()
