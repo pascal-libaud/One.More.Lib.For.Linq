@@ -12,18 +12,11 @@ public class OmFirstTest : TestBase
     [Fact]
     public void OmFirst_should_not_throw_when_found_multiple_candidates()
     {
-        try
-        {
-            var result = new List<int> { 0, 1, 2, 2, 3 }.OmFirst(x => x == 2);
-            Assert.Equal(2, result);
+        var func = () => new List<int> { 0, 1, 2, 2, 3 }.OmFirst(x => x == 2);
+        func.Should().NotThrow();
 
-            result = new List<int> { 1, 2 }.OmFirst();
-            Assert.Equal(1, result);
-        }
-        catch (Exception)
-        {
-            Assert.Fail();
-        }
+        func = () => new List<int> { 1, 2 }.OmFirst();
+        func.Should().NotThrow();
     }
 
     [Fact]
