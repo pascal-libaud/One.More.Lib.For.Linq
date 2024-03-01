@@ -1,5 +1,3 @@
-﻿using One.More.Lib.For.Linq.Helper;
-
 namespace One.More.Lib.For.Linq.Tests;
 
 public class EmptyTest : TestBase

@@ -1,6 +1,6 @@
 ﻿using System.Collections;
-using One.More.Lib.For.Linq.Helper;
-using One.More.Lib.For.Linq.Tests;
+
+namespace One.More.Lib.For.Linq.Tests;
 
 public static class SpyEnumerable
 {
