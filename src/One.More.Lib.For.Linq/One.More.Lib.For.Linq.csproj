@@ -10,10 +10,18 @@
 	  <PackageTags>Linq;Async</PackageTags>
 	  <PackageProjectUrl>https://github.com/pascal-libaud/One.More.Lib.For.Linq</PackageProjectUrl>
 	  <RepositoryUrl>https://github.com/pascal-libaud/One.More.Lib.For.Linq</RepositoryUrl>
-	  <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+	  <PackageLicenseFile>LICENSE</PackageLicenseFile>
 	  <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
 
 	  <ImplicitUsings>disable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+	<ItemGroup>
+		<None Include="..\..\LICENSE">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+
+		<None Include="..\..\readme.md" Pack="true" PackagePath="\" />
+	</ItemGroup>
 </Project>
