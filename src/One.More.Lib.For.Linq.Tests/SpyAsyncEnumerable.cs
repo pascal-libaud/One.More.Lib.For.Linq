@@ -22,7 +22,7 @@ public class SpyAsyncEnumerable<T> : IAsyncEnumerable<T>, ISpyAsyncEnumerable<T>
     public int CountEnumeration { get; set; } = 0;
     public int CountItemEnumerated { get; set; } = 0;
 
-    public IAsyncEnumerator<T> GetAsyncEnumerator(CancellationToken cancellationToken = new CancellationToken())
+    public IAsyncEnumerator<T> GetAsyncEnumerator(CancellationToken cancellationToken = default)
     {
         return new SpyAsyncEnumerator<T>(this, _enumerable.GetAsyncEnumerator(cancellationToken));
     }
