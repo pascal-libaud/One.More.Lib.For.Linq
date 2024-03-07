@@ -2,7 +2,6 @@
 
 //InfiniteIteratorAsync : comment le tester efficacement ?
 
-// OmAppendAsync, OmPrependAsync
 // OmAggregate (3 méthodes différentes)
 // OmCountAsync
 // OnSelectMany, OmSelectManyAsync
