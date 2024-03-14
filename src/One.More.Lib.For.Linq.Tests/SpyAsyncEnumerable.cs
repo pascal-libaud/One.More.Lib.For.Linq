@@ -4,7 +4,12 @@ public static class SpyAsyncEnumerable
 {
     public static SpyAsyncEnumerable<int> GetValuesAsync()
     {
-        return new SpyAsyncEnumerable<int>(LinqAsyncHelper.RangeAsync(10));
+        return GetValuesAsync(LinqAsyncHelper.RangeAsync(10));
+    }
+
+    public static SpyAsyncEnumerable<int> GetValuesAsync(IAsyncEnumerable<int> source)
+    {
+        return new SpyAsyncEnumerable<int>(source);
     }
 }
 
@@ -28,7 +33,7 @@ public class SpyAsyncEnumerable<T> : IAsyncEnumerable<T>, ISpyAsyncEnumerable<T>
     }
 }
 
-public class SpyAsyncEnumerator<T> : IAsyncEnumerator<T>
+file class SpyAsyncEnumerator<T> : IAsyncEnumerator<T>
 {
     private bool _firstCallMade = false;
     private readonly ISpy _spied;

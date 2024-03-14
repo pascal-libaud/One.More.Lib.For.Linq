@@ -1,7 +1,7 @@
 ﻿// TODO : Créer les méthodes ci-dessous
 
 // OmAggregateAsync
-// CastAsync()
+// CastAsync
 // CrossJoinAsync
 // FirstAsync, FirstOrDefaultAsync
 // GroupByAsync
