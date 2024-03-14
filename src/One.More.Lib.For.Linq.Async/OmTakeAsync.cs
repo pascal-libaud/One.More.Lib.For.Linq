@@ -1,13 +1,13 @@
-﻿namespace One.More.Lib.For.Linq;
+﻿namespace One.More.Lib.For.Linq.Async;
 
-public static partial class LinqHelper
+public static partial class LinqAsyncHelper
 {
     public static IAsyncEnumerable<T> OmTakeAsync<T>(this IAsyncEnumerable<T> source, int count)
     {
-        return EnumerationWayStrategy.FocusOn switch
+        return InternalAsyncStrategy.Selected switch
         {
-            EnumerationWay.Foreach => OmTakeAsync_Foreach(source, count),
-            EnumerationWay.Enumerator => OmTakeAsync_Enumerator(source, count),
+            AsyncEnumerationWay.Foreach => OmTakeAsync_Foreach(source, count),
+            AsyncEnumerationWay.Enumerator => OmTakeAsync_Enumerator(source, count),
             _ => OmTakeAsync_Foreach(source, count)
         };
     }

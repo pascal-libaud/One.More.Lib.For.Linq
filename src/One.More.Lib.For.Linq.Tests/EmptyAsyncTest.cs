@@ -5,14 +5,14 @@ public class EmptyAsyncTest : TestBase
     [Fact]
     public void EmptyAsync_should_not_be_null()
     {
-        var result = LinqHelper.EmptyAsync<int>();
+        var result = LinqAsyncHelper.EmptyAsync<int>();
         Assert.NotNull(result);
     }
 
     [Fact]
     public async Task EmptyAsync_should_be_empty()
     {
-        var result = await LinqHelper.EmptyAsync<int>().OmToListAsync();
+        var result = await LinqAsyncHelper.EmptyAsync<int>().OmToListAsync();
         Assert.Empty(result);
     }
 }

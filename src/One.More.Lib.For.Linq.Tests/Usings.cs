@@ -4,3 +4,5 @@ global using System.Threading;
 global using System.Threading.Tasks;
 global using Xunit;
 global using FluentAssertions;
+
+global using One.More.Lib.For.Linq.Async;
