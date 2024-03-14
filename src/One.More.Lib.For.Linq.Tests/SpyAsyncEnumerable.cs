@@ -4,7 +4,7 @@ public static class SpyAsyncEnumerable
 {
     public static SpyAsyncEnumerable<int> GetValuesAsync()
     {
-        return new SpyAsyncEnumerable<int>(LinqHelper.RangeAsync(10));
+        return new SpyAsyncEnumerable<int>(LinqAsyncHelper.RangeAsync(10));
     }
 }
 

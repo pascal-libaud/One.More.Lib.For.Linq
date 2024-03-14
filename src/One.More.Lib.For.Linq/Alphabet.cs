@@ -4,7 +4,7 @@ public static partial class LinqHelper
 {
     public static IEnumerable<char> Alphabet()
     {
-        return EnumerationWayStrategy.FocusOn switch
+        return InternalStrategy.Selected switch
         {
             EnumerationWay.For => Alphabet_For(),
             EnumerationWay.Range => Alphabet_Range(),

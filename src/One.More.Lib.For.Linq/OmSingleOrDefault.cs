@@ -4,7 +4,7 @@ public static partial class LinqHelper
 {
     public static T? OmSingleOrDefault<T>(this IEnumerable<T> source)
     {
-        return EnumerationWayStrategy.FocusOn switch
+        return InternalStrategy.Selected switch
         {
             EnumerationWay.Foreach => source.OmSingleOrDefault_Foreach(),
             EnumerationWay.Enumerator => source.OmSingleOrDefault_Enumerator(),

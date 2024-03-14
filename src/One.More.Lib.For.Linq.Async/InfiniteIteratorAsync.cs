@@ -1,6 +1,6 @@
-﻿namespace One.More.Lib.For.Linq;
+﻿namespace One.More.Lib.For.Linq.Async;
 
-public static partial class LinqHelper
+public static partial class LinqAsyncHelper
 {
     public static IAsyncEnumerable<T> InfiniteIteratorAsync<T>() where T : INumber<T>
     {

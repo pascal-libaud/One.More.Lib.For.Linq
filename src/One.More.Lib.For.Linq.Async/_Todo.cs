@@ -1,5 +1,19 @@
 ﻿// TODO : Créer les méthodes ci-dessous
 
+// OmAggregateAsync
+// CastAsync()
+// CrossJoinAsync
+// FirstAsync, FirstOrDefaultAsync
+// GroupByAsync
+// HasDuplicateAsync
+// OrderByAsync, ThenByAsync
+// ReverseAsync
+// SingleAsync
+// SingleOrDefaultAsync
+// SkipAsync, SkipLastAsync
+// ZipAsync
+// RepeatAsync
+
 // Enumerable.Concat()
 // Enumerable.DefaultIfEmpty()
 // Enumerable.OfType<>()

@@ -7,7 +7,7 @@
 	  <PackageReadmeFile>readme.md</PackageReadmeFile>
 	  <Title>One more lib for Linq</Title>
 	  <RepositoryType>git</RepositoryType>
-	  <PackageTags>Linq;Async</PackageTags>
+	  <PackageTags>Linq</PackageTags>
 	  <PackageProjectUrl>https://github.com/pascal-libaud/One.More.Lib.For.Linq</PackageProjectUrl>
 	  <RepositoryUrl>https://github.com/pascal-libaud/One.More.Lib.For.Linq</RepositoryUrl>
 	  <PackageLicenseFile>LICENSE</PackageLicenseFile>

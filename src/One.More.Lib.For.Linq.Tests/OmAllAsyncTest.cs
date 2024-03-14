@@ -5,8 +5,8 @@ public class OmAllAsyncTest : TestBase
     [Fact]
     public async Task OmAllAsync_should_return_true_when_empty()
     {
-        Assert.True(await LinqHelper.EmptyAsync<int>().OmAllAsync(x => x == 10));
-        Assert.True(await LinqHelper.EmptyAsync<int>().OmAllAsync(x => (x == 10).ToTask()));
+        Assert.True(await LinqAsyncHelper.EmptyAsync<int>().OmAllAsync(x => x == 10));
+        Assert.True(await LinqAsyncHelper.EmptyAsync<int>().OmAllAsync(x => (x == 10).ToTask()));
     }
 
     [Fact]

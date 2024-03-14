@@ -23,7 +23,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\HelloWorld\HelloWorld.csproj" />
+    <ProjectReference Include="..\One.More.Lib.For.Linq.Async\One.More.Lib.For.Linq.Async.csproj" />
+    <ProjectReference Include="..\One.More.Lib.For.Linq\One.More.Lib.For.Linq.csproj" />
   </ItemGroup>
 
 </Project>

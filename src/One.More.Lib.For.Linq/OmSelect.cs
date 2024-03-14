@@ -9,7 +9,7 @@ public static partial class LinqHelper
         if (source is ICollection<T> collection)
             return new SelectCollection<T, U>(collection, selector);
 
-        return EnumerationWayStrategy.FocusOn switch
+        return InternalStrategy.Selected switch
         {
             EnumerationWay.Foreach => source.OmSelect_Foreach(selector),
             EnumerationWay.Enumerator => source.OmSelect_Enumerator(selector),

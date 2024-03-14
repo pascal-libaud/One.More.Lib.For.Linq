@@ -12,9 +12,14 @@ public class StrategyFixture
         string? value = Environment.GetEnvironmentVariable("EnumerationStrategy");
 
         if (value != null && Enum.TryParse<EnumerationWay>(value, true, out var way))
-            EnumerationWayStrategy.FocusOn = way;
+            InternalStrategy.Selected = way;
         else
-            EnumerationWayStrategy.FocusOn = EnumerationWay.Foreach;
+            InternalStrategy.Selected = InternalStrategy.Default;
+
+        if (value != null && Enum.TryParse<AsyncEnumerationWay>(value, true, out var asyncWay))
+            InternalAsyncStrategy.Selected = asyncWay;
+        else
+            InternalAsyncStrategy.Selected = InternalAsyncStrategy.Default;
     }
 }
 
