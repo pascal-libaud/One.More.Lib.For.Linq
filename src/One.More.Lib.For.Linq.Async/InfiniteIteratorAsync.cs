@@ -2,16 +2,23 @@
 
 public static partial class LinqAsyncHelper
 {
-    public static IAsyncEnumerable<T> InfiniteIteratorAsync<T>() where T : INumber<T>
+    public static async IAsyncEnumerable<T> InfiniteIteratorAsync<T>([EnumeratorCancellation] CancellationToken cancellation = default) where T : INumber<T>
     {
-        return InfiniteIteratorAsync(T.Zero);
+        T increment = T.Zero;
+        while (true)
+        {
+            await Task.Yield();
+            cancellation.ThrowIfCancellationRequested();
+            yield return increment++;
+        }
     }
 
-    public static async IAsyncEnumerable<T> InfiniteIteratorAsync<T>(T start) where T : INumber<T>
+    public static async IAsyncEnumerable<T> InfiniteIteratorAsync<T>(T start, [EnumeratorCancellation] CancellationToken cancellation = default) where T : INumber<T>
     {
         while (true)
         {
             await Task.Yield();
+            cancellation.ThrowIfCancellationRequested();
             yield return start++;
         }
     }
