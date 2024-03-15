@@ -16,7 +16,6 @@
 
 // Repeat
 
-// Enumerable.ToArray()
 // Enumerable.ToDictionary()
 // Enumerable.ToHashSet()
 // Enumerable.ToLookup()
