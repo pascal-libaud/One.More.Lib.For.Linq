@@ -1,7 +1,5 @@
 // TODO Créer les tests pour les méthodes ci-dessous
 
-//InfiniteIteratorAsync : comment le tester efficacement ?
-
 // OmAggregate (3 méthodes différentes)
 // OnSelectMany, OmSelectManyAsync
 // OmTake<T>

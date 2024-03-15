@@ -20,4 +20,34 @@ public class OmAllAsyncTest : TestBase
         var omAll = async (IAsyncEnumerable<int> x) => await x.OmAllAsync(z => z < 8);
         await omAll.Should_not_enumerate_all_when();
     }
+
+    [Fact]
+    public async Task OmAllAsync_should_pass_cancellation_token()
+    {
+        var token = new CancellationTokenSource();
+        await token.CancelAsync();
+
+        var func = async () => await LinqAsyncHelper.RangeAsync(10).OmAllAsync(x => x == 4, token.Token);
+        await func.Should().ThrowAsync<OperationCanceledException>();
+    } 
+    
+    [Fact]
+    public async Task OmAllAsync_overload_should_pass_cancellation_token()
+    {
+        var token = new CancellationTokenSource();
+        await token.CancelAsync();
+
+        var func = async () => await LinqAsyncHelper.RangeAsync(10).OmAllAsync(x =>  (x == 4).ToTask(), token.Token);
+        await func.Should().ThrowAsync<OperationCanceledException>();
+    }
+
+    [Fact]
+    public async Task OmAllAsync_overload_should_cancel_with_its_cancellation_token()
+    {
+        var token = new CancellationTokenSource();
+        await token.CancelAsync();
+
+        var func = async () => await LinqHelper.Range(10).OmAllAsync(x => (x == 4).ToTask(), token.Token);
+        await func.Should().ThrowAsync<OperationCanceledException>();
+    }
 }
