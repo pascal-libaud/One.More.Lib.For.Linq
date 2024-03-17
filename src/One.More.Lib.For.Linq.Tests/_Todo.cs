@@ -1,6 +1,5 @@
 // TODO Créer les tests pour les méthodes ci-dessous
 
-// OmAggregate (3 méthodes différentes)
 // OnSelectMany, OmSelectManyAsync
 // OmTake<T>
 // OmTakeAsync<T>
