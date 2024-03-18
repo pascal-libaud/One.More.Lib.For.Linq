@@ -16,6 +16,18 @@ public class OmChunkTest : TestBase
     }
 
     [Fact]
+    public void OmChunk_should_work_with_empty_source()
+    {
+        Assert.Equal(0, LinqHelper.Empty<int>().OmChunk(3).OmCount());
+    }
+
+    [Fact]
+    public void OmChunk_should_not_return_last_empty_chunk()
+    {
+        Assert.Equal(3, LinqHelper.Range(9).OmChunk(3).OmCount());
+    }
+
+    [Fact]
     public void OmChunk_should_not_enumerate_early()
     {
         var omChunk = (IEnumerable<int> x) => x.OmChunk(3);

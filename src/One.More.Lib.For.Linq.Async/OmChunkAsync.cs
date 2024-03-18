@@ -2,10 +2,10 @@
 
 public static partial class LinqAsyncHelper
 {
-    public static async IAsyncEnumerable<T[]> OmChunkAsync<T>(this IAsyncEnumerable<T> source, int size)
+    public static async IAsyncEnumerable<T[]> OmChunkAsync<T>(this IAsyncEnumerable<T> source, int size, [EnumeratorCancellation] CancellationToken cancellationToken = default)
     {
         var list = new List<T>();
-        await foreach (var item in source)
+        await foreach (var item in source.WithCancellation(cancellationToken))
         {
             list.Add(item);
             if (list.Count == size)
