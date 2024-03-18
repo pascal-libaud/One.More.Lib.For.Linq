@@ -41,6 +41,13 @@ public class OmFirstOrDefaultTest : TestBase
     }
 
     [Fact]
+    public void OmFirstOrDefault_with_predicate_should_return_zero_when_no_item_found()
+    {
+        var result = LinqHelper.Range(5, 5).OmFirstOrDefault(x => x == 20);
+        Assert.Equal(0, result);
+    }
+
+    [Fact]
     public void OmFirstOrDefault_with_predicate_should_return_default_when_no_item_found()
     {
         var result = LinqHelper.RangeNullable(0, 10).OmFirstOrDefault(x => x == 20);
