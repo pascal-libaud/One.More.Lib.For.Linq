@@ -16,6 +16,9 @@
 
 // Repeat
 
+// Last, TakeLast
+// SkipUntil, TakeWhile
+
 // Enumerable.ToDictionary()
 // Enumerable.ToHashSet()
 // Enumerable.ToLookup()
