@@ -22,13 +22,12 @@ public class OmSingleTest : TestBase
     }
 
     // TODO le déplacer dans TestHelper et le tester sur plus de méthodes
-    // Voir pour le faire aussi avec la version async
     [Fact]
     public void OmSingle_enumerate_all_when_first_demanded()
     {
         var spy = SpyEnumerable.GetValues();
 
-        _ = spy.OmSingle(x => x == 0);
+        _ = spy.OmSingle(x => x == 1);
 
         Assert.True(spy.IsEndReached);
     }

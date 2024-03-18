@@ -39,7 +39,7 @@ public static partial class LinqAsyncHelper
         }
     }
 
-    public static async IAsyncEnumerable<T?> RangeNullableAsync<T>(T start, T count, [EnumeratorCancellation] CancellationToken cancellationToken = default) where T : struct, INumber<T>
+    public static async IAsyncEnumerable<T?> RangeNullableAsync<T>(T start, T count, [EnumeratorCancellation] CancellationToken cancellationToken = default) where T : INumber<T>
     {
         await Task.Yield();
         var end = start + count;
