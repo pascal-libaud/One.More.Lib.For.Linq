@@ -22,11 +22,11 @@ public class OmSingleOrDefaultAsyncTest : TestBase
     }
 
     [Fact]
-    public void OmSingleOrDefaultAsync_enumerate_all_when_first_demanded()
+    public async Task OmSingleOrDefaultAsync_enumerate_all_when_first_demanded()
     {
         var spy = SpyAsyncEnumerable.GetValuesAsync();
 
-        _ = spy.OmSingleOrDefaultAsync(x => x == 0);
+        _ = await spy.OmSingleOrDefaultAsync(x => x == 0);
 
         Assert.True(spy.IsEndReached);
     }
