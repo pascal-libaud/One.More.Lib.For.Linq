@@ -45,6 +45,7 @@ public static class TestHelper
         var spy = SpyEnumerable.GetValues();
 
         _ = func(spy);
+        Assert.True(spy.IsEnumerated);
         Assert.False(spy.IsEndReached);
     }
 
