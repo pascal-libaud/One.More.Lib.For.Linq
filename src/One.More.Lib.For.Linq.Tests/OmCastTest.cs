@@ -35,7 +35,7 @@ public class OmCastTest : TestBase
     [Fact]
     public void OmCast_should_not_enumerate_all_when_not_demanded()
     {
-        var sut = (IEnumerable<int> x) => x.OmCast<int>().OmTake(2);
+        var sut = (IEnumerable<int> x) => x.OmCast<int>().OmTake(2).OmToList();
         sut.Should_not_enumerate_all_when();
     }
 }

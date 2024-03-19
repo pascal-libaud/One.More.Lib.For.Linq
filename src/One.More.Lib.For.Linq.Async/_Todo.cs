@@ -1,7 +1,6 @@
 ﻿// TODO : Créer les méthodes ci-dessous
 
 // OmAggregateAsync
-// OfTypeAsync, CastAsync // voir comment palier au problème du fait qu'il n'existe pas de IAsyncEnumerable non générique
 // CrossJoinAsync
 // FirstAsync, FirstOrDefaultAsync
 // GroupByAsync
