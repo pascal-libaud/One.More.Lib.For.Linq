@@ -5,16 +5,16 @@ public class OmCastAsyncTest : TestBase
     [Fact]
     public async Task OmCastAsync_should_return_as_many_elements_as_the_source_list()
     {
-        var list = new List<DummyBase> { new Dummy1(), new Dummy1(), new Dummy1(), new Dummy1() }.ToAsyncEnumerable();
-        var result = await list.OmCastAsync<DummyBase, Dummy1>().OmToListAsync();
+        var source = new List<DummyBase> { new Dummy1(), new Dummy1(), new Dummy1(), new Dummy1() }.ToAsyncEnumerable();
+        var result = await source.OmCastAsync<DummyBase, Dummy1>().OmToListAsync();
         Assert.Equal(4, result.Count);
     }
 
     [Fact]
     public async Task OmCastAsync_should_throw_an_exception_when_cast_is_invalid()
     {
-        var list = new List<DummyBase> { new Dummy1(), new Dummy2(), new Dummy1(), new Dummy2() }.ToAsyncEnumerable();
-        var action = () =>  list.OmCastAsync<DummyBase, Dummy1>().OmToListAsync();
+        var source = new List<DummyBase> { new Dummy1(), new Dummy2(), new Dummy1(), new Dummy2() }.ToAsyncEnumerable();
+        var action = () =>  source.OmCastAsync<DummyBase, Dummy1>().OmToListAsync();
         await action.Should().ThrowAsync<InvalidCastException>();
     }
 

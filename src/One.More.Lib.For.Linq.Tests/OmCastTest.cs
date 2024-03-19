@@ -5,16 +5,16 @@ public class OmCastTest : TestBase
     [Fact]
     public void OmCast_should_return_as_many_elements_as_the_source_list()
     {
-        var list = new List<DummyBase> { new Dummy1(), new Dummy1(), new Dummy1(), new Dummy1() };
-        var result = list.OmCast<Dummy1>().OmToList();
+        var source = new List<DummyBase> { new Dummy1(), new Dummy1(), new Dummy1(), new Dummy1() };
+        var result = source.OmCast<Dummy1>().OmToList();
         Assert.Equal(4, result.Count);
     }
 
     [Fact]
     public void OmCast_should_throw_an_exception_when_cast_is_invalid()
     {
-        var list = new List<DummyBase> { new Dummy1(), new Dummy2(), new Dummy1(), new Dummy2() };
-        var action = () => list.OmCast<Dummy1>().OmToList();
+        var source = new List<DummyBase> { new Dummy1(), new Dummy2(), new Dummy1(), new Dummy2() };
+        var action = () => source.OmCast<Dummy1>().OmToList();
         Assert.Throws<InvalidCastException>(() => action());
     }
 

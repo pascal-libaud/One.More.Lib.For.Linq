@@ -7,11 +7,11 @@ public class OmHasDuplicateTest : TestBase
     {
         Assert.False(LinqHelper.Empty<int>().OmHasDuplicate());
 
-        var list = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-        Assert.False(list.OmHasDuplicate());
+        var source = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+        Assert.False(source.OmHasDuplicate());
 
-        list.Add(3);
-        Assert.True(list.OmHasDuplicate());
+        source.Add(3);
+        Assert.True(source.OmHasDuplicate());
     }
 
     [Fact]

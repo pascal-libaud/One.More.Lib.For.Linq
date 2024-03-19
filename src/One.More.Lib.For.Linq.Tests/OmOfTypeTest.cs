@@ -5,8 +5,8 @@ public class OmOfTypeTest : TestBase
     [Fact]
     public void OmOfType_should_return_only_matching_elements()
     {
-        var list = new List<DummyBase> { new Dummy1(), new Dummy2(), new Dummy1(), new Dummy2() };
-        var result = list.OmOfType<Dummy1>();
+        var source = new List<DummyBase> { new Dummy1(), new Dummy2(), new Dummy1(), new Dummy2() };
+        var result = source.OmOfType<Dummy1>();
 
         result.Should().BeEquivalentTo(new List<Dummy1> { new(), new() }, x => x.ComparingRecordsByValue());
     }
