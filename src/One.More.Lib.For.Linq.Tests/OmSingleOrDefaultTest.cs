@@ -22,12 +22,13 @@ public class OmSingleOrDefaultTest : TestBase
     }
 
     // TODO le déplacer dans TestHelper et le tester sur plus de méthodes
+    // Voir pour le faire aussi pour la version async
     [Fact]
     public void OmSingleOrDefault_enumerate_all_when_first_demanded()
     {
         var spy = SpyEnumerable.GetValues();
 
-        _ = spy.OmSingleOrDefault(x => x == 1);
+        _ = spy.OmSingleOrDefault(x => x == 0);
 
         Assert.True(spy.IsEndReached);
     }
@@ -37,6 +38,13 @@ public class OmSingleOrDefaultTest : TestBase
     {
         var result = LinqHelper.Empty<int?>().OmSingleOrDefault();
         Assert.Null(result);
+    }
+
+    [Fact]
+    public void OmSingleOrDefault_with_predicate_should_return_zero_when_no_item_found()
+    {
+        var result = LinqHelper.Range(5, 5).OmSingleOrDefault(x => x == 20);
+        Assert.Equal(0, result);
     }
 
     [Fact]
