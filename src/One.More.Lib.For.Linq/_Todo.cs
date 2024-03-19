@@ -2,7 +2,6 @@
 
 // Enumerable.Concat()
 // Enumerable.DefaultIfEmpty()
-// Enumerable.OfType<>()
 
 // ForEach()
 

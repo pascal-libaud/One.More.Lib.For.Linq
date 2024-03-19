@@ -17,10 +17,25 @@ public class OmCastTest : TestBase
         var action = () => list.OmCast<Dummy1>().OmToList();
         Assert.Throws<InvalidCastException>(() => action());
     }
+
+    [Fact]
+    public void OmCast_should_enumerate_each_item_once()
+    {
+        var sut = (IEnumerable<int> x) => x.OmCast<int>().OmToList();
+        sut.Should_enumerate_each_item_once();
+    }
+
+    [Fact]
+    public void OmCast_should_not_enumerate_early()
+    {
+        var sut = (IEnumerable<int> x) => x.OmCast<int>();
+        sut.Should_not_enumerate_early();
+    }
+
+    [Fact]
+    public void OmCast_should_not_enumerate_all_when_not_demanded()
+    {
+        var sut = (IEnumerable<int> x) => x.OmCast<int>().OmTake(2);
+        sut.Should_not_enumerate_all_when();
+    }
 }
-
-file abstract class DummyBase;
-
-file class Dummy1 : DummyBase;
-
-file class Dummy2 : DummyBase;
