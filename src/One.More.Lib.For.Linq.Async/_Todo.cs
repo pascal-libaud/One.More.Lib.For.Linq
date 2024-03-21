@@ -2,13 +2,10 @@
 
 // OmAggregateAsync
 // CrossJoinAsync
-// FirstAsync, FirstOrDefaultAsync
 // GroupByAsync
 // HasDuplicateAsync
 // OrderByAsync, ThenByAsync
 // ReverseAsync
-// SingleAsync
-// SingleOrDefaultAsync
 // SkipAsync, SkipLastAsync
 // ZipAsync
 // RepeatAsync
