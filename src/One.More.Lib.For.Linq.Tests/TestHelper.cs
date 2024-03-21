@@ -32,9 +32,9 @@ public static class TestHelper
         Assert.Equal(1, spy.CountEnumeration);
     }
 
-    public static async Task Should_enumerate_each_item_once<T>(this Func<IAsyncEnumerable<int>, Task<T>> func)
+    public static async Task Should_enumerate_each_item_once<T>(this Func<IAsyncEnumerable<int>, Task<T>> func, ISpyAsyncEnumerable<int>? spy = null)
     {
-        var spy = SpyAsyncEnumerable.GetValuesAsync();
+        spy ??= SpyAsyncEnumerable.GetValuesAsync();
 
         _ = await func(spy);
         Assert.Equal(1, spy.CountEnumeration);
