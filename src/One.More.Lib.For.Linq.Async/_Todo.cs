@@ -18,10 +18,7 @@
 // Nouveautés .Net 9
 // Enumerable.CountBy, AggregateBy, Index
 
-// Enumerable.Last()
-// Enumerable.LastOrDefault()
-
-// Last, TakeLast
+// TakeLast
 // SkipUntil, TakeWhile
 
 // Enumerable.ToDictionary()
