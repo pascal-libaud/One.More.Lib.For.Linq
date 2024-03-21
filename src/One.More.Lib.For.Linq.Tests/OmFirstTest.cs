@@ -5,8 +5,14 @@ public class OmFirstTest : TestBase
     [Fact]
     public void OmFirst_should_work_as_expected()
     {
-        var result = LinqHelper.Range(0, 10).OmFirst(x => x == 5);
-        Assert.Equal(5, result);
+        DummyIndexValue[] source =
+        [
+            .. LinqHelper.Range(0, 10).OmSelect(x => new DummyIndexValue(x, x)),
+            .. LinqHelper.Range(0, 10).OmSelect(x => new DummyIndexValue(x + 10, x))
+        ];
+
+        var result = source.OmFirst(x => x.Value == 5);
+        Assert.Equal(new DummyIndexValue(5, 5), result);
     }
 
     [Fact]

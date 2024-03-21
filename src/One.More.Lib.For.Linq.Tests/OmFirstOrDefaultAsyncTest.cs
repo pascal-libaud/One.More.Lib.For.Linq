@@ -67,4 +67,15 @@ public class OmFirstOrDefaultAsyncAsyncTest : TestBase
         var func = () => LinqAsyncHelper.RangeAsync(0, 10).OmFirstOrDefaultAsync(x => x == 20);
         await func.Should().NotThrowAsync();
     }
+
+    [Fact]
+    public async Task OmFirstOrDefaultAsync_should_pass_cancellation_token()
+    {
+        var token = new CancellationTokenSource();
+        await token.CancelAsync();
+
+        var func = () => new List<int> { 0, 1, 2, 2, 3 }.ToAsyncEnumerable().OmFirstOrDefaultAsync(x => x == 2, token.Token);
+        await func.Should().ThrowAsync<OperationCanceledException>();
+    }
+
 }
