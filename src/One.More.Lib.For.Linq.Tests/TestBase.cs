@@ -15,11 +15,6 @@ public class StrategyFixture
             InternalStrategy.Selected = way;
         else
             InternalStrategy.Selected = InternalStrategy.Default;
-
-        if (value != null && Enum.TryParse<AsyncEnumerationWay>(value, true, out var asyncWay))
-            InternalAsyncStrategy.Selected = asyncWay;
-        else
-            InternalAsyncStrategy.Selected = InternalAsyncStrategy.Default;
     }
 }
 

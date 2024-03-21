@@ -9,8 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "One.More.Lib.For.Linq.Tests
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "One.More.Lib.For.Linq", "One.More.Lib.For.Linq\One.More.Lib.For.Linq.csproj", "{2C85849C-98FE-4554-95F4-73BFDC471695}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "One.More.Lib.For.Linq.Async", "One.More.Lib.For.Linq.Async\One.More.Lib.For.Linq.Async.csproj", "{90476763-9369-4C41-B9C1-2B1015A78B17}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +27,6 @@ Global
 		{2C85849C-98FE-4554-95F4-73BFDC471695}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C85849C-98FE-4554-95F4-73BFDC471695}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C85849C-98FE-4554-95F4-73BFDC471695}.Release|Any CPU.Build.0 = Release|Any CPU
-		{90476763-9369-4C41-B9C1-2B1015A78B17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{90476763-9369-4C41-B9C1-2B1015A78B17}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{90476763-9369-4C41-B9C1-2B1015A78B17}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{90476763-9369-4C41-B9C1-2B1015A78B17}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
