@@ -3,9 +3,7 @@
 // OmAggregateAsync
 // CrossJoinAsync
 // GroupByAsync
-// HasDuplicateAsync
 // OrderByAsync, ThenByAsync
-// ReverseAsync
 // SkipAsync, SkipLastAsync
 // ZipAsync
 // RepeatAsync
@@ -22,8 +20,6 @@
 
 // Enumerable.Last()
 // Enumerable.LastOrDefault()
-
-// Repeat
 
 // Last, TakeLast
 // SkipUntil, TakeWhile
