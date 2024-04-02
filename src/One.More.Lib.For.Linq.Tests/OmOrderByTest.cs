@@ -13,7 +13,6 @@ public class OmOrderByTest : TestBase
     [Fact]
     public void OmThenBy_should_not_reorder_items_sorted_by_OmOrderBy()
     {
-
         Person t1 = new("Tata", 5);
         Person t2 = new("Toto", 10);
         Person t3 = new("Tata", 12);
