@@ -12,6 +12,7 @@ public class OmAppendTest : TestBase
         }
 
         Assert.Equal(new[] { "P", "Q", "R" }, GetValues().OmAppend("R"));
+        Assert.Equal(new[] { "P", "Q", "R" }, GetValues().OmToList().OmAppend("R"));
     }
 
     [Fact]
@@ -23,6 +24,7 @@ public class OmAppendTest : TestBase
         }
 
         Assert.Equal(new[] { "R" }, GetValues().OmAppend("R"));
+        Assert.Equal(new[] { "R" }, GetValues().OmToList().OmAppend("R"));
     }
 
     [Fact]
@@ -34,6 +36,7 @@ public class OmAppendTest : TestBase
         }
 
         Assert.NotNull(() => GetValues().OmAppend("R"));
+        Assert.NotNull(() => GetValues().OmToList().OmAppend("R"));
     }
 
     [Fact]

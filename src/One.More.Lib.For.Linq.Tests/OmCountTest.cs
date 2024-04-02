@@ -36,5 +36,9 @@ public class OmCountTest : TestBase
         _ = spy.OmSelect(x => x.ToString()).OmCount();
         Assert.Equal(0, spy.CountEnumeration);
         Assert.Equal(0, spy.CountItemEnumerated);
+
+        _ = spy.OmAppend(10).OmCount();
+        Assert.Equal(0, spy.CountEnumeration);
+        Assert.Equal(0, spy.CountItemEnumerated);
     }
 }
