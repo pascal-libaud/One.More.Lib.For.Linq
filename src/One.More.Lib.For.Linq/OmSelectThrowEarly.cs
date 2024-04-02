@@ -2,7 +2,7 @@
 
 public static partial class LinqHelper
 {
-    public static IEnumerable<U> OmSelectThrowEarly<T, U>(this IEnumerable<T> source, Func<T, U> selector)
+    public static IEnumerable<TResult> OmSelectThrowEarly<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, TResult> selector)
     {
         // Version qui énumère 2x la collection
         //if(!source.Any())
@@ -10,7 +10,7 @@ public static partial class LinqHelper
 
         //return Internal(source, selector);
 
-        //static IEnumerable<U> Internal(IEnumerable<T> s, Func<T, U> selector)
+        //static IEnumerable<TResult> Internal(IEnumerable<TSource> s, Func<TSource, TResult> selector)
         //{
         //    foreach (var item in s)
         //    {
@@ -26,7 +26,7 @@ public static partial class LinqHelper
 
         return Enumerate(enumerator, selector);
 
-        static IEnumerable<U> Enumerate(IEnumerator<T> enumerator, Func<T, U> selector)
+        static IEnumerable<TResult> Enumerate(IEnumerator<TSource> enumerator, Func<TSource, TResult> selector)
         {
             do
             {

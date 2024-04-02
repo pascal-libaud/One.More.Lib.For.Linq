@@ -14,9 +14,9 @@ public static partial class LinqHelper
         return false;
     }
 
-    public static bool OmHasDuplicate<T, U>(this IEnumerable<T> source, Func<T, U> selector)
+    public static bool OmHasDuplicate<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> selector)
     {
-        var hash = new HashSet<U>();
+        var hash = new HashSet<TKey>();
         foreach (var item in source)
         {
             if (!hash.Add(selector(item)))

@@ -12,10 +12,10 @@ public static partial class LinqHelper
     public static IEnumerable<IOmGroup<TKey, TValue>> OmGroupBy<TValue, TKey>(this IEnumerable<TValue> source, Func<TValue, TKey> keySelector)
         where TKey : notnull
     {
-        return OmGroup(source, keySelector, null);
+        return OmGroupBy(source, keySelector, null);
     }
 
-    public static IEnumerable<IOmGroup<TKey, TValue>> OmGroup<TValue, TKey>(this IEnumerable<TValue> source, Func<TValue, TKey> keySelector, IEqualityComparer<TKey>? equalityComparer)
+    public static IEnumerable<IOmGroup<TKey, TValue>> OmGroupBy<TValue, TKey>(this IEnumerable<TValue> source, Func<TValue, TKey> keySelector, IEqualityComparer<TKey>? equalityComparer)
         where TKey : notnull
     {
         return OmGroupBy(source, keySelector, x => x, equalityComparer);

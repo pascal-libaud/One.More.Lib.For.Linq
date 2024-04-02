@@ -2,12 +2,12 @@
 
 public static partial class LinqHelper
 {
-    public static IEnumerable<(T, U)> OmZip<T, U>(this IEnumerable<T> source1, IEnumerable<U> source2)
+    public static IEnumerable<(TFirst, TSecond)> OmZip<TFirst, TSecond>(this IEnumerable<TFirst> source1, IEnumerable<TSecond> source2)
     {
         return source1.OmZip(source2, (t, u) => (t, u));
     }
 
-    public static IEnumerable<V> OmZip<T, U, V>(this IEnumerable<T> source1, IEnumerable<U> source2, Func<T, U, V> selector)
+    public static IEnumerable<TResult> OmZip<TFirst, TSecond, TResult>(this IEnumerable<TFirst> source1, IEnumerable<TSecond> source2, Func<TFirst, TSecond, TResult> selector)
     {
         using var enumerator1 = source1.GetEnumerator();
         using var enumerator2 = source2.GetEnumerator();
@@ -16,7 +16,7 @@ public static partial class LinqHelper
             yield return selector(enumerator1.Current, enumerator2.Current);
     }
 
-    public static IEnumerable<V> OmZipFull<T, U, V>(this IEnumerable<T> source1, IEnumerable<U> source2, Func<T?, U?, V> selector)
+    public static IEnumerable<TResult> OmZipFull<TFirst, TSecond, TResult>(this IEnumerable<TFirst> source1, IEnumerable<TSecond> source2, Func<TFirst?, TSecond?, TResult> selector)
     {
         using var enumerator1 = source1.GetEnumerator();
         using var enumerator2 = source2.GetEnumerator();

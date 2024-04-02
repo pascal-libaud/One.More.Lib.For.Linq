@@ -2,15 +2,15 @@
 
 public static partial class LinqHelper
 {
-    public static IEnumerable<(T?, U?)> FullOuterJoin<T, U>(this IEnumerable<T> source1, IEnumerable<U> source2, Func<T?, U?, int> comparer)
-        where T : class
-        where U : class
+    public static IEnumerable<(TFirst?, TSecond?)> FullOuterJoin<TFirst, TSecond>(this IEnumerable<TFirst> source1, IEnumerable<TSecond> source2, Func<TFirst?, TSecond?, int> comparer)
+        where TFirst : class
+        where TSecond : class
     {
         using var enumerator1 = source1.GetEnumerator();
         using var enumerator2 = source2.GetEnumerator();
 
-        T? current1 = enumerator1.MoveNext() ? enumerator1.Current : default;
-        U? current2 = enumerator2.MoveNext() ? enumerator2.Current : default;
+        TFirst? current1 = enumerator1.MoveNext() ? enumerator1.Current : default;
+        TSecond? current2 = enumerator2.MoveNext() ? enumerator2.Current : default;
 
         while (current1 != default || current2 != default)
         {

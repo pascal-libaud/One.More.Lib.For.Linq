@@ -6,20 +6,20 @@ public interface IOmOrderedEnumerable<out T> : IEnumerable<T> { }
 
 public static partial class LinqHelper
 {
-    public static IOmOrderedEnumerable<T> OmOrderBy<T, U>(this IEnumerable<T> source, Func<T, U> keySelector)
+    public static IOmOrderedEnumerable<TSource> OmOrderBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector)
     {
-        return new OmOrderedEnumerable<T, U>(source, keySelector, null);
+        return new OmOrderedEnumerable<TSource, TKey>(source, keySelector, null);
     }
 
-    public static IOmOrderedEnumerable<T> OmThenBy<T, U>(this IOmOrderedEnumerable<T> source, Func<T, U> keySelector)
+    public static IOmOrderedEnumerable<TSource> OmThenBy<TSource, TKey>(this IOmOrderedEnumerable<TSource> source, Func<TSource, TKey> keySelector)
     {
-        return new OmOrderedEnumerable<T, U>(source, keySelector, source as OmOrderedEnumerable<T>);
+        return new OmOrderedEnumerable<TSource, TKey>(source, keySelector, source as OmOrderedEnumerable<TSource>);
     }
 }
 
 file abstract class OmOrderedEnumerable<T> : IOmOrderedEnumerable<T>
 {
-    public abstract int Compare(T x, T y);
+    internal abstract int Compare(T x, T y);
 
     public abstract IEnumerator<T> GetEnumerator();
 

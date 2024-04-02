@@ -4,10 +4,10 @@ namespace One.More.Lib.For.Linq;
 
 public static partial class LinqHelper
 {
-    public static IEnumerable<U> OmSelect<T, U>(this IEnumerable<T> source, Func<T, U> selector)
+    public static IEnumerable<TResult> OmSelect<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, TResult> selector)
     {
-        if (source is ICollection<T> collection)
-            return new SelectCollection<T, U>(collection, selector);
+        if (source is ICollection<TSource> collection)
+            return new SelectCollection<TSource, TResult>(collection, selector);
 
         return InternalStrategy.Selected switch
         {
@@ -17,39 +17,39 @@ public static partial class LinqHelper
         };
     }
 
-    public static IEnumerable<U> OmSelect<T, U>(this IEnumerable<T> source, Func<T, int, U> selector)
+    public static IEnumerable<TResult> OmSelect<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, int, TResult> selector)
     {
         int index = 0;
         foreach (var item in source)
             yield return selector(item, index++);
     }
 
-    private static IEnumerable<U> OmSelect_Foreach<T, U>(this IEnumerable<T> source, Func<T, U> selector)
+    private static IEnumerable<TResult> OmSelect_Foreach<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, TResult> selector)
     {
         foreach (var item in source)
             yield return selector(item);
     }
 
-    private static IEnumerable<U> OmSelect_Enumerator<T, U>(this IEnumerable<T> source, Func<T, U> selector)
+    private static IEnumerable<TResult> OmSelect_Enumerator<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, TResult> selector)
     {
-        return new SelectEnumerable<T, U>(source, selector);
+        return new SelectEnumerable<TSource, TResult>(source, selector);
     }
 }
 
-file class SelectCollection<T, U> : IEnumerable<U>, IWithCount
+file class SelectCollection<TSource, TResult> : IEnumerable<TResult>, IWithCount
 {
-    private readonly ICollection<T> _collection;
-    private readonly Func<T, U> _selector;
+    private readonly ICollection<TSource> _collection;
+    private readonly Func<TSource, TResult> _selector;
 
-    public SelectCollection(ICollection<T> collection, Func<T, U> selector)
+    public SelectCollection(ICollection<TSource> collection, Func<TSource, TResult> selector)
     {
         _collection = collection;
         _selector = selector;
     }
 
-    public IEnumerator<U> GetEnumerator()
+    public IEnumerator<TResult> GetEnumerator()
     {
-        return new SelectEnumerator<T, U>(_collection.GetEnumerator(), _selector);
+        return new SelectEnumerator<TSource, TResult>(_collection.GetEnumerator(), _selector);
     }
 
     IEnumerator IEnumerable.GetEnumerator()
@@ -60,20 +60,20 @@ file class SelectCollection<T, U> : IEnumerable<U>, IWithCount
     public int Count => _collection.Count;
 }
 
-file class SelectEnumerable<T, U> : IEnumerable<U>
+file class SelectEnumerable<TSource, TResult> : IEnumerable<TResult>
 {
-    private readonly IEnumerable<T> _collection;
-    private readonly Func<T, U> _selector;
+    private readonly IEnumerable<TSource> _collection;
+    private readonly Func<TSource, TResult> _selector;
 
-    public SelectEnumerable(IEnumerable<T> collection, Func<T, U> selector)
+    public SelectEnumerable(IEnumerable<TSource> collection, Func<TSource, TResult> selector)
     {
         _collection = collection;
         _selector = selector;
     }
 
-    public IEnumerator<U> GetEnumerator()
+    public IEnumerator<TResult> GetEnumerator()
     {
-        return new SelectEnumerator<T, U>(_collection.GetEnumerator(), _selector);
+        return new SelectEnumerator<TSource, TResult>(_collection.GetEnumerator(), _selector);
     }
 
     IEnumerator IEnumerable.GetEnumerator()
@@ -82,12 +82,12 @@ file class SelectEnumerable<T, U> : IEnumerable<U>
     }
 }
 
-file class SelectEnumerator<T, U> : IEnumerator<U>
+file class SelectEnumerator<TSource, TResult> : IEnumerator<TResult>
 {
-    private readonly IEnumerator<T> _enumerator;
-    private readonly Func<T, U> _selector;
+    private readonly IEnumerator<TSource> _enumerator;
+    private readonly Func<TSource, TResult> _selector;
 
-    public SelectEnumerator(IEnumerator<T> enumerator, Func<T, U> selector)
+    public SelectEnumerator(IEnumerator<TSource> enumerator, Func<TSource, TResult> selector)
     {
         _enumerator = enumerator;
         _selector = selector;
@@ -103,7 +103,7 @@ file class SelectEnumerator<T, U> : IEnumerator<U>
         _enumerator.MoveNext();
     }
 
-    public U Current => _selector(_enumerator.Current);
+    public TResult Current => _selector(_enumerator.Current);
 
     object IEnumerator.Current => Current;
 

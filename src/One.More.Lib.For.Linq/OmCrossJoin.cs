@@ -4,7 +4,7 @@ namespace One.More.Lib.For.Linq;
 
 public static partial class LinqHelper
 {
-    public static IEnumerable<(T, U)> OmCrossJoin<T, U>(this IEnumerable<T> source1, IReadOnlyCollection<U> source2)
+    public static IEnumerable<(TFirst, TSecond)> OmCrossJoin<TFirst, TSecond>(this IEnumerable<TFirst> source1, IReadOnlyCollection<TSecond> source2)
     {
         foreach (var item1 in source1)
         foreach (var item2 in source2)
@@ -12,7 +12,7 @@ public static partial class LinqHelper
     }
 
     //TODO Mettre au propre
-    public static IEnumerable<(T, U)> OmCrossJoinBis<T, U>(this IEnumerable<T> source1, IReadOnlyCollection<U> source2)
+    public static IEnumerable<(TFirst, TSecond)> OmCrossJoinBis<TFirst, TSecond>(this IEnumerable<TFirst> source1, IReadOnlyCollection<TSecond> source2)
     {
         return source1.SelectMany(_ => source2, (x, y) => (x, y));
     }
