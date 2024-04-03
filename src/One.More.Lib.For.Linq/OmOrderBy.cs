@@ -44,7 +44,7 @@ file class OmOrderedEnumerable<T, U> : OmOrderedEnumerable<T>
         orderedList.Sort(Compare);
     }
 
-    public override int Compare(T x, T y)
+    internal override int Compare(T x, T y)
     {
         int result = 0;
         if (_parent != null)
