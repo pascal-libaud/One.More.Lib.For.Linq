@@ -4,6 +4,17 @@ public static partial class LinqHelper
 {
     public static IEnumerable<T> OmSkip<T>(this IEnumerable<T> source, int count)
     {
+        if (source is ICollection<T> collection)
+            return new EnumerableWithCount<T>(source.InnerOmSkip(count), () => Math.Max(collection.Count - count, 0));
+
+        if (source is IWithCount withCount)
+            return new EnumerableWithCount<T>(source.InnerOmSkip(count), () => Math.Max(withCount.Count - count, 0));
+
+        return source.InnerOmSkip(count);
+    }   
+    
+    private static IEnumerable<T> InnerOmSkip<T>(this IEnumerable<T> source, int count)
+    {
         return InternalStrategy.Selected switch
         {
             EnumerationWay.Foreach => OmSkip_Foreach(source, count),

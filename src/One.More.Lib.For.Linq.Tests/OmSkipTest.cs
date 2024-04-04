@@ -13,6 +13,7 @@ public class OmSkipTest : TestBase
     public void OmSkip_should_return_only_one_item_when_count_equals_count_minus_one()
     {
         Assert.Equal(LinqHelper.Range(10).OmSkip(9), [9]);
+        Assert.Equal(LinqHelper.Range(10).OmToList().OmSkip(9), [9]);
     }
 
     [Fact]

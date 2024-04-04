@@ -64,6 +64,8 @@ public class OmCountTest : TestBase
             .OmCast<int>()
             .OmTake(5)
             .OmReverse()
+            .OmSkip(1)
+            .OmSkipLast(1)
             .OmCount();
 
         Assert.Equal(0, spy.CountEnumeration);
