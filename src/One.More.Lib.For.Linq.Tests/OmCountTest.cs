@@ -40,5 +40,24 @@ public class OmCountTest : TestBase
         _ = spy.OmAppend(10).OmCount();
         Assert.Equal(0, spy.CountEnumeration);
         Assert.Equal(0, spy.CountItemEnumerated);
+
+        _ = spy.OmCast<int>().OmCount();
+        Assert.Equal(0, spy.CountEnumeration);
+        Assert.Equal(0, spy.CountItemEnumerated);
+    }
+
+    [Fact]
+    public void OmCount_should_not_enumerate_when_methods_combined()
+    {
+        var spy = new SpyList<int>(new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 });
+
+        _ = spy.OmPrepend(-1)
+            .OmAppend(10)
+            .OmSelect(x => 2 * x)
+            .OmCast<int>()
+            .OmCount();
+
+        Assert.Equal(0, spy.CountEnumeration);
+        Assert.Equal(0, spy.CountItemEnumerated);
     }
 }

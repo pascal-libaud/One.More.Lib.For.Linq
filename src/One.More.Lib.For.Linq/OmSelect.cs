@@ -7,6 +7,9 @@ public static partial class LinqHelper
         if (source is ICollection<TSource> collection)
             return new EnumerableWithCount<TResult>(source.InnerOmSelect(selector), () => collection.Count);
 
+        if (source is IWithCount withCount)
+            return new EnumerableWithCount<TResult>(source.InnerOmSelect(selector), () => withCount.Count);
+
         return InnerOmSelect(source, selector);
     }
 

@@ -7,6 +7,9 @@ public static partial class LinqHelper
         if (source is ICollection<T> collection)
             return new EnumerableWithCount<T>(OmAppend_Enumerable(source, item), () => collection.Count + 1);
 
+        if (source is IWithCount withCount)
+            return new EnumerableWithCount<T>(OmAppend_Enumerable(source, item), () => withCount.Count + 1);
+
         return OmAppend_Enumerable(source, item);
     }
 
