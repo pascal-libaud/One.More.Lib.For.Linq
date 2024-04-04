@@ -47,6 +47,13 @@ public class OmCountTest : TestBase
     }
 
     [Fact]
+    public void OmCount_on_OnTake_should_be_correct()
+    {
+        Assert.Equal(5, new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }.OmTake(5).OmCount());
+        Assert.Equal(2, new List<int> { 0, 1 }.OmTake(5).OmCount());
+    }
+
+    [Fact]
     public void OmCount_should_not_enumerate_when_methods_combined()
     {
         var spy = new SpyList<int>(new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 });
@@ -55,6 +62,7 @@ public class OmCountTest : TestBase
             .OmAppend(10)
             .OmSelect(x => 2 * x)
             .OmCast<int>()
+            .OmTake(5)
             .OmCount();
 
         Assert.Equal(0, spy.CountEnumeration);
