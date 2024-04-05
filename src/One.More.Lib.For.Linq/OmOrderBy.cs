@@ -29,35 +29,37 @@ file abstract class OmOrderedEnumerable<T> : IOmOrderedEnumerable<T>
     }
 }
 
-file class OmOrderedEnumerable<T, U> : OmOrderedEnumerable<T>
+file class OmOrderedEnumerable<TSource, TKey> : OmOrderedEnumerable<TSource>, IWithCount
 {
-    private readonly Func<T, U> _keySelector;
-    private readonly OmOrderedEnumerable<T>? _parent;
-    private readonly List<T> orderedList;
+    private readonly Func<TSource, TKey> _keySelector;
+    private readonly OmOrderedEnumerable<TSource>? _parent;
+    private readonly List<TSource> orderedList;
 
-    public OmOrderedEnumerable(IEnumerable<T> source, Func<T, U> keySelector, OmOrderedEnumerable<T>? parent)
+    public OmOrderedEnumerable(IEnumerable<TSource> source, Func<TSource, TKey> keySelector, OmOrderedEnumerable<TSource>? parent)
     {
         _keySelector = keySelector;
         _parent = parent;
 
-        orderedList = new List<T>(source);
+        orderedList = new List<TSource>(source);
         orderedList.Sort(Compare);
     }
 
-    internal override int Compare(T x, T y)
+    internal override int Compare(TSource x, TSource y)
     {
         int result = 0;
         if (_parent != null)
             result = _parent.Compare(x, y);
 
         if (result == 0)
-            result = Comparer<U>.Default.Compare(_keySelector(x), _keySelector(y));
+            result = Comparer<TKey>.Default.Compare(_keySelector(x), _keySelector(y));
 
         return result;
     }
 
-    public override IEnumerator<T> GetEnumerator()
+    public override IEnumerator<TSource> GetEnumerator()
     {
         return orderedList.GetEnumerator();
     }
+
+    public int Count => orderedList.Count;
 }
