@@ -14,7 +14,7 @@ public class OmSelectTest : TestBase
     {
         var spy = SpyEnumerable.GetValues();
 
-        foreach (var value in spy)
+        foreach (var value in spy.OmSelect(x => x))
         {
             if(value == 5)
                 break;
