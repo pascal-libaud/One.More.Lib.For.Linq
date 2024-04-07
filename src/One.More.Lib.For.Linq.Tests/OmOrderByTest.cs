@@ -22,6 +22,20 @@ public class OmOrderByTest : TestBase
         var expected = new List<Person> { t1, t3, t4, t2 };
         Assert.Equal(expected, actual);
     }
+
+    [Fact]
+    public void OmOrderBy_should_not_enumerate_early()
+    {
+        var omChunk = (IEnumerable<int> x) => x.OmOrderBy(y => y);
+        omChunk.Should_not_enumerate_early();
+    }
+
+    [Fact]
+    public void OmThenBy_should_not_enumerate_early()
+    {
+        var omChunk = (IEnumerable<int> x) => x.OmOrderBy(y => y).OmThenBy(y => y);
+        omChunk.Should_not_enumerate_early();
+    }
 }
 
 file record Person(string Name, int Age);
