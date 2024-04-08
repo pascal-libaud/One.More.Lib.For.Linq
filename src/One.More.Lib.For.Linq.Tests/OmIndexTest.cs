@@ -70,7 +70,7 @@ public class OmIndexTest : TestBase
     [Fact]
     public void OmIndex_should_work_well_when_not_null()
     {
-        var source = LinqHelper.Range(5).OmIndex();
+        var source = LinqHelper.Range(5).OmSelect(x => x * 2).OmIndex();
         var expected = new[] { (0, 0), (1, 2), (2, 4), (3, 6), (4, 8) };
 
         Assert.Equal(expected, source);
